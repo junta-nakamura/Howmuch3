@@ -13,7 +13,7 @@ class DeviseCreateCompanies < ActiveRecord::Migration[6.0]
       t.string  :municipalities,     null: false
       t.string  :house_number,       null: false
       t.string  :building
-      t.integer :entry,              null: false
+      t.integer :entry
       ## Recoverable
       t.string   :reset_password_token
       t.datetime :reset_password_sent_at

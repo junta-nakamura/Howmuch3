@@ -8,6 +8,6 @@ class Portfolio < ApplicationRecord
   with_options presence: true do
     validates :portfolio_name
     validates :detail
-    validates :type  
+    validates :type_id
   end
 end

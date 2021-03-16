@@ -1,0 +1,58 @@
+<header class="header-3">
+  <div class="header-inner">
+    <div class="logo">
+      <div class="howmuch-logo">How much</div>
+    </div>
+    <nav class="header-nav">
+      <div class="header-btn">
+          <%= link_to "All portfolios", portfolios_path, class:"button-pulse index-btn" %>
+          <%= link_to "My page", company_path(current_company.id), class:"button-pulse logout-btn" %>
+          <%= link_to "Log out", destroy_company_session_path, method: :delete, class:"button-pulse logout-btn" %>
+      </div>
+    </nav>
+  </div>
+</header>
+
+<div class="company-edit-all">
+<%= form_with model: @company, local: true do |f| %>
+  <div class="company-edit-box">
+    <div class="field">
+      <%= f.label :company_name %><br />
+      <%= f.text_field :company_name %>
+    </div>
+
+    <div class="field">
+      <%= f.label :company_phone %><br />
+      <%= f.text_field :company_phone %>
+    </div>
+
+    <div class="field">
+      <%= f.label :postal_code %><br />
+      <%= f.text_field :postal_code %>
+    </div>
+
+    <div class="field">
+      <%= f.collection_select(:prefecture_id, Prefecture.all, :id, :name, {prompt: "---" }) %>
+    </div>
+
+    <div class="field">
+      <%= f.label :municipalities %><br />
+      <%= f.text_field :municipalities %>
+    </div>
+
+    <div class="field">
+      <%= f.label :house_number %><br />
+      <%= f.text_field :house_number %>
+    </div>
+
+    <div class="field">
+      <%= f.label :building %><br />
+      <%= f.text_field :building %>
+    </div>
+
+    <div class="actions">
+      <%= f.submit "Update", class:"edit-finish button-pulse" %>
+    </div>
+  </div>
+<% end %>
+</div>
