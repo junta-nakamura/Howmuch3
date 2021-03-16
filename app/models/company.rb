@@ -1,6 +1,10 @@
 class Company < ApplicationRecord
-  # Include default devise modules. Others available are:
-  # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
+  extend ActiveHash::Associations::ActiveRecordExtensions
+  
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
+  
+  has_many :messages, dependent: :destroy
+  has_many :entries, dependent: :destroy
+  belongs_to :prefecture
 end
