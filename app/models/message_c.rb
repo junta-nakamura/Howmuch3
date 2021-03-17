@@ -1,5 +1,5 @@
-class Message < ApplicationRecord
+class MessageC < ApplicationRecord
   validates :content, presence: true
-  belongs_to :user
+  belongs_to :company
   belongs_to :room
 end
