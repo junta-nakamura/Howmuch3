@@ -12,7 +12,6 @@ class UsersController < ApplicationController
       
       @currentCompanyEntry = Entry.where(company_id: current_company.id)
       @userEntry = Entry.where(user_id: @user.id)
-      # unless @user.id == current_company.id
       @currentCompanyEntry.each do |cc|
         @userEntry.each do |u|
           if cc.room_id == u.room_id then
@@ -31,6 +30,5 @@ class UsersController < ApplicationController
       @my_portfolios = @portfolios.where(user_id: @user.id)
     end
   end
-
 
 end

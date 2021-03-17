@@ -23,72 +23,26 @@
   </div>
 </header>
 
+
+<%# <%= room_lists %>
 <div class="message-wrapper">
-    <% if user_signed_in? %>
-
-      <div class="user-type-line">
-        <div class="user-message">
-          <div class="message-user">
-            <%# <%= message.user.nickname %>
-          </div>
-          <div class="message-content">
-            <%# <%= message.content %>
-          </div>  
-          <div class="message-date">
-            <%# <%= message.created_at %>
-          </div>
-        </div>  
-
-        <div class="company-message">
-          <div class="message-company">
-            <%# <%= message.company.nickname %>
-          </div>
-          <div class="message-content">
-            <%# <%= message.content %>
-          </div>  
-          <div class="message-date">
-            <%# <%= message.created_at %>
-          </div>
-        </div>
-      </div>
-
-    <% elsif company_signed_in? %>
-
-      <div class="company-type-line">
-        <div class="company-message-right">
-          <div class="message-company">
-          あ
-            <%# <%= message.company.nickname %>
-          </div>
-          <div class="message-content">
-          あ
-            <%# <%= message.content %>
-          </div>  
-          <div class="message-date">
-          あ
-            <%# <%= message.created_at %>
-          </div>
-        </div>  
-
-        <div class="user-message-left">
-          <div class="message-user">
-          い
-            <%# <%= message.user.nickname %>
-          </div>
-          <div class="message-content">
-          い
-            <%# <%= message.content %>
-          </div>  
-          <div class="message-date">
-          い
-            <%# <%= message.created_at %>
-          </div>
-        </div>  
-      </div>
-
-    <% end %>
+  <div class="message">
+     <div class="message-user">
+       <%= @messages.companies.company_name %>
+     </div>
+     <div class="message-content">
+       <%= @companyMessages.content %>
+     </div>
+     <div class="message-date">
+       <%= @companyMessages.created_at %>
+     </div>
+    </div>
+  </div>
 </div>
 
-
-
-
+<%= form_with model: @message, class: 'form', local: true do |f| %>
+  <div class="form-input">
+    <%= f.text_field :content, class: 'form-message', placeholder: 'type a message' %>
+  </div>
+  <%= f.submit '送信', class: 'form-submit' %>
+<% end %>

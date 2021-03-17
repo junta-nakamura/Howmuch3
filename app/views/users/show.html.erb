@@ -51,10 +51,11 @@
     <%= link_to "ダイレクトメッセージ", room_path(@roomId) %>
   <% else %>
     <%= form_for @room do |f| %>
+    <%= f.hidden_field :user_id, value: @user.id %>
+    <%= f.hidden_field :company_id, value: current_company.id %>  
       <%= fields_for @entry do |m| %>
         <%= m.hidden_field :user_id, value: @user.id %>
         <%= m.hidden_field :company_id, value: current_company.id %>
-        <%# <%= m.hidden_field :room_id, value: @roomcount+1 %>
       <% end %>  
       <%= f.submit "ダイレクトメッセージ" %>
     <% end %>
