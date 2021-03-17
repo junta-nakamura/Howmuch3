@@ -1,1 +1,94 @@
-チャット
+<header class="header-3">
+  <div class="header-inner">
+    <div class="logo">
+      <div class="howmuch-logo">How much</div>
+    </div>
+    <nav class="header-nav">
+    <% if user_signed_in?  %>
+      <div class="header-btn">
+        <%= link_to "New portfolio", new_portfolio_path, class:"button-pulse logout-btn" %>
+        <%= link_to "My page", user_path(current_user.id), class:"button-pulse mypage-btn" %>
+        <%= link_to "Log out", destroy_user_session_path, method: :delete, class:"button-pulse logout-btn" %>
+      </div>
+    <% else company_signed_in? %>
+      <div class="header-btn">  
+        <%= link_to "All portfolios", portfolios_path, class:"button-pulse index-btn" %>
+        <%= link_to "My page", company_path(current_company.id), class:"button-pulse mypage-btn" %>
+        <%= link_to "Log out",  destroy_company_session_path, method: :delete, class:"button-pulse logout-btn" %>
+        <%# 戻るボタンも必要 %>
+      </div>
+     <% end %>
+      </div>  
+    </nav>
+  </div>
+</header>
+
+<div class="message-wrapper">
+    <% if user_signed_in? %>
+
+      <div class="user-type-line">
+        <div class="user-message">
+          <div class="message-user">
+            <%# <%= message.user.nickname %>
+          </div>
+          <div class="message-content">
+            <%# <%= message.content %>
+          </div>  
+          <div class="message-date">
+            <%# <%= message.created_at %>
+          </div>
+        </div>  
+
+        <div class="company-message">
+          <div class="message-company">
+            <%# <%= message.company.nickname %>
+          </div>
+          <div class="message-content">
+            <%# <%= message.content %>
+          </div>  
+          <div class="message-date">
+            <%# <%= message.created_at %>
+          </div>
+        </div>
+      </div>
+
+    <% elsif company_signed_in? %>
+
+      <div class="company-type-line">
+        <div class="company-message-right">
+          <div class="message-company">
+          あ
+            <%# <%= message.company.nickname %>
+          </div>
+          <div class="message-content">
+          あ
+            <%# <%= message.content %>
+          </div>  
+          <div class="message-date">
+          あ
+            <%# <%= message.created_at %>
+          </div>
+        </div>  
+
+        <div class="user-message-left">
+          <div class="message-user">
+          い
+            <%# <%= message.user.nickname %>
+          </div>
+          <div class="message-content">
+          い
+            <%# <%= message.content %>
+          </div>  
+          <div class="message-date">
+          い
+            <%# <%= message.created_at %>
+          </div>
+        </div>  
+      </div>
+
+    <% end %>
+</div>
+
+
+
+
