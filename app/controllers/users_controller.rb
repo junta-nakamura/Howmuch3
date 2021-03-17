@@ -23,7 +23,6 @@ class UsersController < ApplicationController
       end 
       unless @haveRoom
         @room = Room.new
-        # @roomcount = Room.count
         @entry = Entry.new
       end
     else

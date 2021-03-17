@@ -204,6 +204,8 @@ input, select {
 
 
 
+
+
 /* ユーザー一覧 */
 /*FontAwesomeを使用しています。*/
 .header-8 {
@@ -671,3 +673,28 @@ header {
   width: 100vw;
   margin: 0 auto;
 }
+
+
+
+
+
+
+/* チャットルーム */
+.message-wrapper {
+  width: 100vw;
+}
+
+.company-type-line {
+  width: 100%;
+  position: relative;
+}
+
+.company-message-right {
+  position: absolute;
+  right: 80px;
+}
+
+/* .user-message-left {
+  position: absolute;
+  left: 80px;
+} */
