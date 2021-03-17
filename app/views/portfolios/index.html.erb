@@ -1,0 +1,40 @@
+<header class="header-3">
+  <div class="header-inner">
+    <div class="logo">
+      <div class="howmuch-logo">How much</div>
+    </div>
+    <nav class="header-nav">
+      <div class="header-btn">
+          <%= link_to "My page", company_path(current_company.id), class:"button-pulse mypage-btn" %>
+          <%= link_to "Log out",  destroy_company_session_path, method: :delete, class:"button-pulse logout-btn" %>
+      </div>  
+    </nav>
+  </div>
+</header>
+
+
+
+
+<div class="card-wrapper">
+  <% @portfolios.each do |portfolio| %>
+  <div class="card-value">
+    <div class="image-wrapper">
+      <div class="card-image">
+        <%= image_tag portfolio.images[0].variant(resize_to_limit: [300, 300]) %>
+       </div>
+    </div>  
+
+    <div class="content-wrapper">
+      <div class="card-title">
+        <div class="content-1"><%= portfolio.portfolio_name %></div>
+      </div>
+      <div class="card-detail">
+        <%= portfolio.detail %>
+      </div>
+      <div class="next-to btn">
+        <%= link_to "続きを読む", portfolio_path(portfolio), class:"content-3" %>
+      </div>
+    </div>
+  </div>
+  <% end %>
+</div>

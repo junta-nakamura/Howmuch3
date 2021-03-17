@@ -1,0 +1,49 @@
+<header class="header-3">
+  <div class="header-inner">
+    <div class="logo">
+      <div class="howmuch-logo">How much</div>
+    </div>
+    <nav class="header-nav">
+      <div class="header-btn">
+          <%= link_to "All portfolios", portfolios_path, class:"button-pulse index-btn" %>
+          <%= link_to "Log out",  destroy_company_session_path, method: :delete, class:"button-pulse logout-btn" %>
+      </div>
+    </nav>
+  </div>
+</header>
+
+<div class="list6">
+  <ul class="list6box">
+    <li class="list">
+      <i class="fas fa-home"></i>
+      <p class="text"><%= @company.company_name %></p>
+    </li>
+    <li class="list">
+      <i class="fas fa-folder"></i>
+      <p class="text"><%= @company.postal_code %></p>
+    </li>
+    <li class="list">
+      <i class="fas fa-folder"></i>
+      <p class="text"><%= @company.prefecture.name %></p>
+    </li>
+    <li class="list">
+      <i class="fas fa-folder"></i>
+      <p class="text"><%= @company.municipalities %></p>
+    </li>
+    <li class="list">
+      <i class="fas fa-folder"></i>
+      <p class="text"><%= @company.house_number %></p>
+    </li>
+    <% if @company.building? %>
+    <li class="list">
+      <i class="fas fa-folder"></i>
+      <p class="text"><%= @company.building %></p>
+    </li>
+    <% end %>
+  </ul>
+  <% if @company.id == current_company.id %>
+    <div class="btn-groups">
+      <%= link_to "Edit", edit_company_path(current_company.id), class:"edit-btn button-fill" %>
+    </div> 
+  <% end %>
+</div>

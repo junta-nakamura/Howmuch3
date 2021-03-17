@@ -1,0 +1,37 @@
+<header class="header-3">
+  <div class="header-inner">
+    <div class="logo">
+      <div class="howmuch-logo">How much</div>
+    </div>
+    <nav class="header-nav">
+      <div class="header-btn">
+          <%= link_to "New portfolio", new_portfolio_path, class:"button-pulse logout-btn" %>
+          <%= link_to "My page", user_path(current_user.id), class:"button-pulse mypage-btn" %>
+          <%= link_to "Log out", destroy_user_session_path, method: :delete, class:"button-pulse logout-btn" %>
+      </div>  
+    </nav>
+  </div>
+</header>
+
+<div class="edit-main-content">
+<%= form_with model: @portfolio, local: true do |f| %>
+  <div class="field">
+    <%= f.label :portfolio_name, class:"portfolio-name-box" %><br />
+    <%= f.text_field :portfolio_name, class:"portfolio-name-field" %>
+  </div>
+
+  <div>
+    <%= f.label :detail, class:"portfolio-detail-box" %><br />
+    <%= f.text_area :detail, class:"field detail-field" %>
+  </div>
+ 
+  <div class="field">
+    <%= f.label :portfolio_type, class:"portfolio-type-box" %><br />
+    <%= f.collection_select(:portfolio_type, PortfolioType.all, :id, :name, {prompt: "---" }, {class:"select-box", id:"item-category"}) %>
+  </div>
+
+  <div>
+    <%= f.submit class:"edit-finish button-pulse"%>
+  </div>
+<% end %>
+</div>

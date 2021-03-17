@@ -1,0 +1,45 @@
+<header class="header-3">
+  <div class="header-inner">
+    <div class="logo">
+      <div class="howmuch-logo">How much</div>
+    </div>
+    <nav class="header-nav">
+      <div class="header-btn">
+          <%= link_to "My page", user_path(current_user.id), class:"button-pulse mypage-btn" %>
+          <%= link_to "Log out",  destroy_company_session_path, method: :delete, class:"button-pulse logout-btn" %>
+      </div>  
+    </nav>
+  </div>
+</header>
+
+<%= form_with model: Portfolio.new, method: :post, local: true do |f| %>
+  <%# <%= render "companys/shared/error_messages", resource: resource %>
+
+<div class="new-portfolio-form">
+  <div class="portfolio-box">
+
+    <div class="field">
+      <%= f.file_field :images, multiple: true, class:"item-image" %>  
+    </div>
+
+    <div class="field">
+      <%= f.label :portfolio_name, class:"portfolio-name-box" %><br />
+      <%= f.text_field :portfolio_name, class:"portfolio-name-field", maxlength: "40" %>
+    </div>
+
+    <div>
+      <%= f.label :detail, class:"portfolio-detail-box" %><br />
+      <%= f.text_area :detail, class:"field detail-field" %>
+    </div>
+
+    <div class="field">
+      <%= f.label :type_id, class:"portfolio-type-box" %><br />
+      <%= f.collection_select(:type_id, Type.all, :id, :name, {prompt: "---" }, {class:"select-box", id:"item-category"}) %>
+    </div>
+
+    <div class="actions">
+      <%= f.submit "ポートフォリオを登録する", class:"action-field button-fill" %>
+    </div>
+  </div>
+</div>
+<% end %>
