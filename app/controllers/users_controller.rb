@@ -2,6 +2,7 @@ class UsersController < ApplicationController
 
   def show
     if user_signed_in?
+      @user = current_user
       @myPortfolios = Portfolio.where(user_id: current_user.id)
     elsif company_signed_in?
       @user = User.find(params[:id])
