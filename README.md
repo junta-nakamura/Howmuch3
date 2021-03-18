@@ -15,8 +15,9 @@
 
 ### Association
 
-- has_many: portfolios
-- has_many: messages
+- has_many :portfolios
+- has_many :messages
+- has_many :rooms
 
 
 
@@ -34,7 +35,8 @@
 | house_number       | string  | null: false               |
 | building           | string  |                           |
 
-- has_many: messages
+- has_many :company_messages
+- has_many :rooms
 
 
 
@@ -51,6 +53,19 @@
 
 - belongs_to :user
 
+
+
+## roomsテーブル
+
+| Column         | Type       | Options           |
+| -------------- | ---------- | ----------------- |
+| user           | references | foreign_key: true |
+| company        | references | foreign_key: true |
+
+- belongs_to :user
+- belongs_to :company
+- has_many :messages
+- has_many :company_messages
 
 
 ## messagesテーブル
