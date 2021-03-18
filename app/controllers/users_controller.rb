@@ -2,13 +2,11 @@ class UsersController < ApplicationController
 
   def show
     if user_signed_in?
-      @user = current_user
-      portfolios = Portfolio.all
-      @my_portfolios = @user.portfolios
+      @myPortfolios = Portfolio.includes(:user)
     elsif company_signed_in?
       @user = User.find(params[:id])
       @portfolios = Portfolio.all
-      @my_portfolios = @portfolios.where(user_id: @user.id)
+      @myPortfolios = @portfolios.where(user_id: @user.id)
       
       @currentCompanyEntry = Entry.where(company_id: current_company.id)
       @userEntry = Entry.where(user_id: @user.id)
@@ -27,7 +25,7 @@ class UsersController < ApplicationController
     else
       @user = User.find(params[:id])
       @portfolios = Portfolio.all
-      @my_portfolios = @portfolios.where(user_id: @user.id)
+      @myPortfolios = @portfolios.where(user_id: @user.id)
     end
   end
 

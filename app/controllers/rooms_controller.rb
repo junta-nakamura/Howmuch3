@@ -1,8 +1,14 @@
 class RoomsController < ApplicationController
-  before_action :authenticate_company!
+  before_action :authenticate_company!, only: [:create]
 
   def index
-    @cc_rooms = current_company.rooms.includes(:messages).order("messages.created_at desc")
+    if company_signed_in?
+      # @companyRooms = Room.where(company_id: current_company.id)
+      @companyRooms = current_company.rooms.includes(:company_messages).order("messages.created_at desc")
+    elsif user_signed_in?
+      # @userRooms = Room.where(user_id: current_user.id)
+      @userRooms = current_user.rooms.includes(:messages).order("messages.created_at desc")
+    end
   end
 
   def create

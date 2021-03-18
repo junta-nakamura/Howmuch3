@@ -23,15 +23,7 @@
   </div>
 </header>
 
-
 <%= room_lists(@companyMessages, @messages) %>
-
-
-
-
-
-
-
 
 <%= form_with model: @companyMessage, url: room_company_messages_path(@room.id), local: true do |f| %>
   <%= f.text_field :content, placeholder: "メッセージを入力して下さい" %>

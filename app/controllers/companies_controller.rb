@@ -3,6 +3,9 @@ class CompaniesController < ApplicationController
   before_action :set_company
 
   def show
+    if company_signed_in?
+      @companyRooms = Room.where(company_id: current_company.id)
+    end
   end
   
   def edit

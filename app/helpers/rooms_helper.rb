@@ -1,20 +1,25 @@
 module RoomsHelper
 
-  # def room_lists
-  #   message_box = []
+  def room_lists(companyMessages, messages)
+    html = ''
+    message_box = []
     
-  #   @messages.each do |message|
-  #     message_box.push(message)
-  #   end
+    messages.each do |message|
+      message_box.push(message)
+    end
     
-  #   @message_cs.each do |message_c|
-  #     message_box.push(message_c)
-  #   end
+    companyMessages.each do |company_message|
+      message_box.push(company_message)
+    end
     
-  #   message_box.sort do |a, b|
-  #     b[:created_at] <=> a[:created_at]
-  #   end
+    message_box.sort do |a, b|
+      b[:created_at] <=> a[:created_at]
+    end
 
-  # end
+    message_box.each do |room|
+      html += render(partial: 'room', locals: {room: room})
+      return raw(html)
+    end
+  end
 
 end

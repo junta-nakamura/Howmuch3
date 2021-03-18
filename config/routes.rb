@@ -15,7 +15,7 @@ Rails.application.routes.draw do
     resources :companies, only: [:show, :edit, :update]
     resources :users, only: [:show, :edit, :update]
     
-    resources :rooms, only: [:create,:show] do
+    resources :rooms, only: [:create,:show, :index] do
       resources :messages, only: [:create]
       resources :company_messages, only: [:create]
     end

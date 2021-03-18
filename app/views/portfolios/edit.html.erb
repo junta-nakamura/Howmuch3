@@ -26,8 +26,8 @@
   </div>
  
   <div class="field">
-    <%= f.label :portfolio_type, class:"portfolio-type-box" %><br />
-    <%= f.collection_select(:portfolio_type, PortfolioType.all, :id, :name, {prompt: "---" }, {class:"select-box", id:"item-category"}) %>
+    <%= f.label :type, class:"portfolio-type-box" %><br />
+    <%= f.collection_select(:type, Type.all, :id, :name, {prompt: "---" }, {class:"select-box", id:"item-category"}) %>
   </div>
 
   <div>

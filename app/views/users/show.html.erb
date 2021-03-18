@@ -4,14 +4,16 @@
       <div class="howmuch-logo">How much</div>
     </div>
     <nav class="header-nav">
-    <% if user_signed_in? && current_user.id == @current_user.id %>
+    <% if user_signed_in? %>
       <div class="header-btn">
         <%= link_to "New portfolio", new_portfolio_path, class:"button-pulse logout-btn" %>
+        <%= link_to "Chat room", rooms_path, class:"button-pulse index-btn" if @userRooms.present? %>
         <%= link_to "Log out", destroy_user_session_path, method: :delete, class:"button-pulse logout-btn" %>
       </div>
     <% else company_signed_in? %>
       <div class="header-btn">  
         <%= link_to "All portfolios", portfolios_path, class:"button-pulse index-btn" %>
+        <%= link_to "Chat room", rooms_path, class:"button-pulse index-btn" if @companyRooms.present? %>
         <%= link_to "My page", company_path(current_company.id), class:"button-pulse mypage-btn" %>
         <%= link_to "Log out",  destroy_company_session_path, method: :delete, class:"button-pulse logout-btn" %>
       </div>
@@ -22,23 +24,23 @@
 </header>
 
 <div class="card-wrapper">
-  <% @my_portfolios.each do |my_portfolio| %>
+  <% @myPortfolios.each do |portfolio| %>
   <div class="card-value">
     <div class="image-wrapper">
       <div class="card-image">
-        <%= image_tag my_portfolio.images[0].variant(resize_to_limit: [300, 300]) %>
+        <%= image_tag portfolio.images[0].variant(resize_to_limit: [300, 300]) %>
        </div>
     </div>  
 
     <div class="content-wrapper">
       <div class="card-title">
-        <div class="content-1"><%= my_portfolio.portfolio_name %></div>
+        <div class="content-1"><%= portfolio.portfolio_name %></div>
       </div>
       <div class="card-detail">
-        <%= my_portfolio.detail %>
+        <%= portfolio.detail %>
       </div>
       <div class="next-to btn">
-        <%= link_to "全体を表示する", portfolio_path(my_portfolio), class:"content-3" %>
+        <%= link_to "全体を表示する", portfolio_path(portfolio), class:"content-3" %>
       </div>
     </div>
   </div>

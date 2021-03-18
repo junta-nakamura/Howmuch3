@@ -1,0 +1,52 @@
+<header class="header-3">
+  <div class="header-inner">
+    <div class="logo">
+      <div class="howmuch-logo">How much</div>
+    </div>
+    <nav class="header-nav">
+    <% if user_signed_in? %>
+        <div class="header-btn">
+          <%= link_to "New portfolio", new_portfolio_path, class:"button-pulse logout-btn" %>
+          <%= link_to "My page", user_path(current_user.id), class:"button-pulse mypage-btn" %>
+          <%= link_to "Log out", destroy_user_session_path, method: :delete, class:"button-pulse logout-btn" %>
+        </div>
+    <% elsif company_signed_in? %>
+      <div class="header-btn">  
+        <%= link_to "All portfolios", portfolios_path, class:"button-pulse index-btn" %>
+        <%= link_to "My page", company_path(current_company.id), class:"button-pulse mypage-btn" %>
+        <%= link_to "Log out", destroy_company_session_path, method: :delete, class:"button-pulse logout-btn" %>
+      </div>
+    <% end %>
+    </nav>
+  </div>
+</header>
+
+<div class="room-wrapper">
+  <div class="side-bar">
+    <% if user_signed_in? %>
+      <% @userRooms.each do |room| %>
+        <div class="user-side-bar-name">
+          <%= room.company.company_name %>
+        </div>
+        <div class="user-side-bar-date">
+          <%= room.company_messages.created_at %>
+        </div>
+      <% end %>
+    <% elsif company_signed_in? %>
+      <% @companyRooms.each do |room| %>
+        <div class="user-side-bar-name">
+          <%= room.users.nickname %>
+        </div>
+        <div class="user-side-bar-content"> 
+          <%= room.messages.content %>
+        </div>
+        <div class="user-side-bar-date">
+          <%= room.messages.created_at %>
+        </div>
+      <% end %>
+    <% end %>  
+  </div>
+  
+  <div class="main-content">
+  </div>
+</div>

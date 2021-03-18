@@ -27,7 +27,7 @@ class PortfoliosController < ApplicationController
 
   def edit
     @portfolios = Portfolio.all
-    @my_portfolios = @portfolios.where(user_id: current_user.id)
+    @myPortfolios = @portfolios.where(user_id: current_user.id)
   end
 
   def update
