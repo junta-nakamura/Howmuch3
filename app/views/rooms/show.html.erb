@@ -24,44 +24,19 @@
 </header>
 
 
-<%# <%= room_lists %>
-<div class="message-wrapper">
-<% if @companyMessages.present? %>
-  <% @companyMessages.each do |c| %>
-    <div class="message">
-       <div class="message-user">
-         <%= c.companies.company_name %>
-       </div>
-       <div class="message-content">
-         <%= c.content %>
-       </div>
-       <div class="message-date">
-         <%= c.created_at %>
-       </div>
-      </div>
-    </div>
-  <% end %>
-<% elsif @messages.present? %>
-  <% @messages.each do |m| %>
-    <div class="message">
-       <div class="message-user">
-         <%= c.companies.company_name %>
-       </div>
-       <div class="message-content">
-         <%= c.content %>
-       </div>
-       <div class="message-date">
-         <%= c.created_at %>
-       </div>
-      </div>
-    </div>
-  <% end %>
-<% end %>
-</div>
+<%= room_lists(@companyMessages, @messages) %>
 
-<%= form_with model: @companyMessage, room_company_messages_path(@room.id), local: true do |f| %>
+
+
+
+
+
+
+
+<%= form_with model: @companyMessage, url: room_company_messages_path(@room.id), local: true do |f| %>
   <%= f.text_field :content, placeholder: "メッセージを入力して下さい" %>
-   <%= f.hidden_field :room_id, value: @room.id %>
-   <%= f.hidden_field :company_id, value: current_company.id %>
+  <%= f.hidden_field :room_id, value: @room.id %>
+  <%= f.hidden_field :company_id, value: current_company.id %>
+  <%= f.submit "送信" %>
 <% end %>
 
