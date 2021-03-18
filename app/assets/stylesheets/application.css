@@ -476,7 +476,9 @@ input, select {
   text-align: center;
 }
 
-
+.detail-show-box {
+  white-space: pre-wrap;
+}
 
 
 

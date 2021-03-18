@@ -5,7 +5,6 @@ class Company < ApplicationRecord
          :recoverable, :rememberable, :validatable
   
   has_many :messages, dependent: :destroy
-  has_many :entries, dependent: :destroy
   has_many :rooms
   belongs_to :prefecture
   has_one_attached :image

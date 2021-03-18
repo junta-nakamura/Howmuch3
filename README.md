@@ -17,7 +17,6 @@
 
 - has_many: portfolios
 - has_many: messages
-- has_many: entries
 
 
 
@@ -36,7 +35,6 @@
 | building           | string  |                           |
 
 - has_many: messages
-- has_many: entries
 
 
 
@@ -52,20 +50,6 @@
 ### Association
 
 - belongs_to :user
-
-
-
-## entriesテーブル
-
-| Column         | Type       | Options           |
-| -------------- | ---------- | ----------------- |
-| user           | references | foreign_key: true |
-| company        | references | foreign_key: true |
-| room           | references | foreign_key: true |
-
-- belongs_to :user
-- belongs_to :company
-- belongs_to :room
 
 
 

@@ -23,9 +23,9 @@
   </div>
 </header>
 
-<div class="user-icon">
+<%# <div class="user-icon">
   <%= image_tag @user.user_image.variant(resize_to_limit: [350, 350]) if @user.user_image.attached? %>
-</div>
+<%# </div> %>
 
 <div class="card-wrapper">
   <% @myPortfolios.each do |portfolio| %>
