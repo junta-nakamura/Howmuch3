@@ -15,6 +15,11 @@
 
 <div class="edit-main-content">
 <%= form_with model: @portfolio, local: true do |f| %>
+
+  <div class="field">
+    <%= f.file_field :images, multiple: true, class:"item-image" %>  
+  </div>
+
   <div class="field">
     <%= f.label :portfolio_name, class:"portfolio-name-box" %><br />
     <%= f.text_field :portfolio_name, class:"portfolio-name-field" %>

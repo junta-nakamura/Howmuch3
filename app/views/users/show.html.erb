@@ -28,7 +28,7 @@
   <div class="card-value">
     <div class="image-wrapper">
       <div class="card-image">
-        <%= image_tag portfolio.images[0].variant(resize_to_limit: [300, 300]) %>
+        <%= image_tag portfolio.images[0].variant(resize_to_limit: [300, 300]), class:"portfolio-image" %>
        </div>
     </div>  
 
@@ -39,8 +39,8 @@
       <div class="card-detail">
         <%= portfolio.detail %>
       </div>
-      <div class="next-to btn">
-        <%= link_to "全体を表示する", portfolio_path(portfolio), class:"content-3" %>
+      <div class="next-to-btn">
+        <%= link_to "詳細を表示する", portfolio_path(portfolio), class:"content-3" %>
       </div>
     </div>
   </div>
@@ -52,14 +52,10 @@
   <% if @haveRoom == true  %>
     <%= link_to "ダイレクトメッセージ", room_path(@roomId) %>
   <% else %>
-    <%= form_for @room do |f| %>
-    <%= f.hidden_field :user_id, value: @user.id %>
-    <%= f.hidden_field :company_id, value: current_company.id %>  
-      <%= fields_for @entry do |m| %>
-        <%= m.hidden_field :user_id, value: @user.id %>
-        <%= m.hidden_field :company_id, value: current_company.id %>
-      <% end %>  
-      <%= f.submit "ダイレクトメッセージ" %>
+    <%= form_with @room, local: true do |f| %>
+     <%= f.hidden_field :user_id, value: @user.id %>
+     <%= f.hidden_field :company_id, value: current_company.id %>  
+    <%= f.submit "ダイレクトメッセージ" %>
     <% end %>
   <% end %>
 <% end %>

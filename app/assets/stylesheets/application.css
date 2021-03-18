@@ -423,7 +423,7 @@ input, select {
 }
 
 .btn-groups {
-  margin: 100px auto 0;
+  margin: 100px auto 100px;
 }
 
 .edit-btn {
@@ -604,15 +604,24 @@ header {
 }
 
 .card-title {
-  
+  margin-top: 40px;
 }
 
 .card-detail {
   width: 300px;
-  margin-top: 15px;
+  margin-top: 35px;
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
+}
+
+.card-image {
+  display: flex;
+  justify-content: center;
+}
+
+.next-to-btn {
+  margin-top: 50px;
 }
 
 
