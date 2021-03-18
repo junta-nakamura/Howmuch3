@@ -27,6 +27,9 @@
       <%= image_tag @portfolio.images[0].variant(resize_to_limit: [350, 350]), class:"content-image" %>
     </div>
     <div class="content-show-box">
+      <div class="card-user">
+        <%= @portfolio.user.nickname %>
+      </div>  
       <div class="title-show-box">
         <%= @portfolio.portfolio_name %>
       </div>

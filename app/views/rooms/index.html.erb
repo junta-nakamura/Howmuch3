@@ -21,32 +21,3 @@
   </div>
 </header>
 
-<div class="room-wrapper">
-  <div class="side-bar">
-    <% if user_signed_in? %>
-      <% @userRooms.each do |room| %>
-        <div class="user-side-bar-name">
-          <%= room.company.company_name %>
-        </div>
-        <div class="user-side-bar-date">
-          <%= room.company_messages.created_at %>
-        </div>
-      <% end %>
-    <% elsif company_signed_in? %>
-      <% @companyRooms.each do |room| %>
-        <div class="user-side-bar-name">
-          <%= room.users.nickname %>
-        </div>
-        <div class="user-side-bar-content"> 
-          <%= room.messages.content %>
-        </div>
-        <div class="user-side-bar-date">
-          <%= room.messages.created_at %>
-        </div>
-      <% end %>
-    <% end %>  
-  </div>
-  
-  <div class="main-content">
-  </div>
-</div>

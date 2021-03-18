@@ -6,4 +6,5 @@ class User < ApplicationRecord
   has_many :entries, dependent: :destroy
   has_many :portfolios, dependent: :destroy
   has_many :rooms
+  has_one_attached :image
 end

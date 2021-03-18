@@ -409,6 +409,12 @@ input, select {
   margin: 0 auto;
 }
 
+.card-user {
+  text-align: center;
+  margin: 20px 0;
+  font-size: 20px;
+}
+
 .title-show-box {
   font-weight: bold;
   font-size: 25px;

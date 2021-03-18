@@ -8,4 +8,5 @@ class Company < ApplicationRecord
   has_many :entries, dependent: :destroy
   has_many :rooms
   belongs_to :prefecture
+  has_one_attached :image
 end
