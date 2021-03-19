@@ -51,6 +51,12 @@
   <% end %>
 </div>
 
+<% if @user == current_user %>
+  <div class="btn-groups">
+    <%= link_to "Edit", edit_user_path(@user), class:"edit-btn button-fill" %>
+  </div> 
+<% end %>
+
 
 <% if company_signed_in? %>
   <% if @haveRoom == true  %>

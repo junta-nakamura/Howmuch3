@@ -1,4 +1,5 @@
 class UsersController < ApplicationController
+  authenticate_user!, only: [:edit, :update]
 
   def show
     if user_signed_in?
@@ -17,6 +18,9 @@ class UsersController < ApplicationController
       @user = User.find(params[:id])
       @myPortfolios = Portfolio.includes(:user)
     end
+  end
+
+  def edit
   end
 
 end
