@@ -1,12 +1,16 @@
 class MessagesController < ApplicationController
 
   def create
-    @message = Message.create(message_params)
+    if @message = Message.create(message_params)
+      redirect_to room_path(@message.room.id)
+    else
+      render room_path(@message.room.id)
+    end
   end
 
   private
   def message_params
-    params.require(:message).permit(:user_id, :content).merge(user_id: current_user.id)
+    params.require(:message).permit(:user_id, :content, :room_id)
   end
   
 end

@@ -1,13 +1,12 @@
 module RoomsHelper
 
-  def message_lists(companyMessages, messages)
+  def message_lists(messages, companyMessages)
     html = ''
     message_box = []
     
     messages.each do |message|
       message_box.push(message)
     end
-    
     companyMessages.each do |company_message|
       message_box.push(company_message)
     end

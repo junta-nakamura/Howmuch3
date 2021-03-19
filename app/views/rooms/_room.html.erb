@@ -3,6 +3,7 @@
   <% chats.each do |chat| %>
     <div class="message">
        <div class="message-user">
+        <%= chat.user.nickname %>
          <%= chat.company.company_name %>
        </div>
        <div class="message-content">

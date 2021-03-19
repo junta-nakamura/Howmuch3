@@ -23,12 +23,21 @@
   </div>
 </header>
 
-<%= message_lists(@companyMessages, @messages) %>
+<%= message_lists(@messages, @companyMessages) %>
 
-<%= form_with model: @companyMessage, url: room_company_messages_path(@room.id), local: true do |f| %>
-  <%= f.text_field :content, placeholder: "メッセージを入力して下さい" %>
-  <%= f.hidden_field :room_id, value: @room.id %>
-  <%= f.hidden_field :company_id, value: current_company.id %>
-  <%= f.submit "送信" %>
+<% if company_signed_in? %>
+  <%= form_with model: @message, url: room_company_messages_path(@room.id), local: true do |f| %>
+    <%= f.text_field :content, placeholder: "メッセージを入力して下さい" %>
+    <%= f.hidden_field :room_id, value: @room.id %>
+    <%= f.hidden_field :company_id, value: current_company.id %>
+    <%= f.submit "送信" %>
+  <% end %>
+<% elsif user_signed_in? %>
+  <%= form_with model: @companyMessage, url: room_messages_path(@room.id), local: true do |f| %>
+    <%= f.text_field :content, placeholder: "メッセージを入力して下さい" %>
+    <%= f.hidden_field :room_id, value: @room.id %>
+    <%= f.hidden_field :company_id, value: current_user.id %>
+    <%= f.submit "送信" %>
+  <% end %>
 <% end %>
 

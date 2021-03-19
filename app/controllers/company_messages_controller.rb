@@ -1,17 +1,18 @@
 class CompanyMessagesController < ApplicationController
 
   def create
-    @companyMessage = CompanyMessage.new(company_message_params)
-    if @companyMessage.save
-      redirect_to room_path(@companyMessage.room.id)
+    @companyMessage = CompanyMessage.create(company_message_params)
+    if @companyMessage
+      binding.pry
+      redirect_to room_path(@companyMessage.room_id)
     else
-      render room_path(@companyMessage.room.id)
+      render room_path(@companyMessage.room_id)
     end
   end
 
   private
   def company_message_params
-    params.require(:company_message).permit(:content, :company_id, :room_id)
+    params.permit(:company_id, :content, :room_id).merge(company_id: current_company.id)
   end
 
 end

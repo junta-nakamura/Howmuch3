@@ -10,11 +10,11 @@ class RoomsController < ApplicationController
   end
 
   def create
-    @room = Room.new(user_id: params[:user_id], company_id: params[:company_id])
+    @room = Room.where(user_id: params[:user_id], company_id: params[:company_id])
     if @room.present?
       redirect_to room_path(@room.id)
     else
-      @room.save(room_params)
+      @room = Room.create(room_params)
       redirect_to room_path(@room.id)
     end
   end
@@ -32,7 +32,6 @@ class RoomsController < ApplicationController
   end   
 
   private
-
   def room_params
     params.require(:room).permit(:user_id, :company_id)
   end
