@@ -10,20 +10,25 @@ class RoomsController < ApplicationController
   end
 
   def create
-    @room = Room.create(room_params)
-    redirect_to room_path(@room.id)
+    @room = Room.new(user_id: params[:user_id], company_id: params[:company_id])
+    if @room.present?
+      redirect_to room_path(@room.id)
+    else
+      @room.save(room_params)
+      redirect_to room_path(@room.id)
+    end
   end
 
   def show
     @room = Room.find(params[:id])
-    if Room.where(id: @room.id, company_id: current_company.id).present?
-      @messages = @room.messages.includes(:user).order("created_at asc")
-      @companyMessages = @room.company_messages.includes(:company).order("created_at asc")
-      @message = Message.new
-      @companyMessage = CompanyMessage.new
-    else
-      redirect_back(fallback_location: root_path)
-    end
+    # if Room.where(id: @room.id, company_id: current_company.id).present?
+    @messages = @room.messages.includes(:user).order("created_at asc")
+    @companyMessages = @room.company_messages.includes(:company).order("created_at asc")
+    @message = Message.new
+    @companyMessage = CompanyMessage.new
+    # else
+    #   redirect_back(fallback_location: root_path)
+    # end
   end   
 
   private

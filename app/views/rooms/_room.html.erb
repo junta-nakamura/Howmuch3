@@ -1,17 +1,17 @@
 <div class="message-wrapper">
 <%# <% if @companyMessages.present? %>
-  <%# <% chat.each do |c| %>
+  <% chats.each do |chat| %>
     <div class="message">
        <div class="message-user">
-         <%= room.company.company_name %>
+         <%= chat.company.company_name %>
        </div>
        <div class="message-content">
-         <%= room.content %>
+         <%= chat.content %>
        </div>
        <div class="message-date">
-         <%= room.created_at %>
+         <%= chat.created_at %>
        </div>
     </div>
-  <%# <% end %>
+  <% end %>
 <%# <% end %>
 </div>

@@ -41,7 +41,9 @@
     <% end %>
     <% if company_signed_in? %>
       <% if @haveRoom == true %>
-        <%= link_to "ダイレクトメッセージ", room_path(@roomId) %>
+      <div class="dm-btn-form">
+        <%= link_to "ダイレクトメッセージ", room_path(@roomId), class:"button-4 dm-btn" %>
+      </div>  
       <% elsif %>
         <%= form_with model: @room, url: rooms_path, class:"dm-btn-form", local: true do |f| %>
          <%= f.hidden_field :user_id, value: @user.id %>

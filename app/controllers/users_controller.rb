@@ -8,10 +8,10 @@ class UsersController < ApplicationController
     elsif company_signed_in?
       @user = User.find(params[:id])
       @myPortfolios = Portfolio.where(user_id: @user.id)
-      if @roomMatch = Room.where(company_id: current_company.id).where(user_id: @user.id) && @roomMatch.present?
+      @roomMatch = Room.where(company_id: current_company.id).where(user_id: @user.id)
+      if @roomMatch.present?
         @haveRoom = true
         @roomId = @roomMatch.ids
-        binding.pry
       else
         @room = Room.new
       end

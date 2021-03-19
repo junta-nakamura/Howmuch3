@@ -1,6 +1,6 @@
 module RoomsHelper
 
-  def room_lists(companyMessages, messages)
+  def message_lists(companyMessages, messages)
     html = ''
     message_box = []
     
@@ -16,8 +16,8 @@ module RoomsHelper
       b[:created_at] <=> a[:created_at]
     end
 
-    message_box.each do |room|
-      html += render(partial: 'room', locals: {room: room})
+    message_box.each do |chats|
+      html += render(partial: 'room', locals: {chats: chats})
       return raw(html)
     end
   end
