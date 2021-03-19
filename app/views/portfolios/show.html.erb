@@ -42,7 +42,9 @@
       <%= link_to "Delete", portfolio_path(@portfolio), method: :delete,  class:"delete-btn" %>
     </div> 
     <% else %>
-      <%= link_to "投稿者詳細", user_path(@portfolio.user_id), class:"button-fill user-detail" %>
+      <div class="user-detail-open">
+        <%= link_to "投稿者詳細", user_path(@portfolio.user_id), class:"button-fill user-detail" %>
+      </div>
     <% end %>
   </div>
 </div>

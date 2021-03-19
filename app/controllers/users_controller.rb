@@ -1,5 +1,5 @@
 class UsersController < ApplicationController
-  authenticate_user!, only: [:edit, :update]
+  before_action :authenticate_user!, only: [:edit, :update]
 
   def show
     if user_signed_in?
@@ -8,9 +8,10 @@ class UsersController < ApplicationController
     elsif company_signed_in?
       @user = User.find(params[:id])
       @myPortfolios = Portfolio.where(user_id: @user.id)
-      if @roomMatch = Room.where(company_id: current_company.id).where(user_id: @user.id)
+      if @roomMatch = Room.where(company_id: current_company.id).where(user_id: @user.id) && @roomMatch.present?
         @haveRoom = true
         @roomId = @roomMatch.ids
+        binding.pry
       else
         @room = Room.new
       end
@@ -23,4 +24,16 @@ class UsersController < ApplicationController
   def edit
   end
 
+  def update
+    if current_user.update(user_params)
+      redirect_to user_path(current_user)
+    else
+      render :edit
+    end
+  end
+
+  private
+  def user_params
+    params.require(:user).permit(:nickname, :last_name, :first_name, :last_name_kana, :first_name_kana, :birthday, :user_image, :type_id, :introduction)
+  end
 end

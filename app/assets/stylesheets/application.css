@@ -411,8 +411,12 @@ input, select {
 
 .card-user {
   text-align: center;
-  margin: 20px 0;
+  margin: 20px auto;
   font-size: 20px;
+  width: 300px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 
 .title-show-box {
@@ -430,6 +434,7 @@ input, select {
 
 .btn-groups {
   margin: 100px auto 100px;
+  text-align: center;
 }
 
 .edit-btn {
@@ -470,8 +475,7 @@ input, select {
 }
 
 .user-detail {
-  margin: auto;
-  margin-top: 50px;
+  margin: 50px auto;
   width: 130px;
   text-align: center;
 }
@@ -480,7 +484,10 @@ input, select {
   white-space: pre-wrap;
 }
 
-
+.user-detail-open {
+  display: flex;
+  justify-content: center;
+}
 
 
 
@@ -567,6 +574,48 @@ header {
   margin-bottom: 50px;
 }
 
+.user-header {
+  display: flex;
+}
+
+.user-icon {
+  margin: 50px;
+  display: flex;
+  flex-direction: column;
+  font-weight: bold;
+  font-size: 20px;
+}
+
+.user-nickname {
+  margin: 0 auto;
+  /* text-align: center; */
+  width: 250px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.user-type {
+  margin: 10px auto;
+  text-align: center;
+}
+
+.user-btn-groups {
+  margin: 40px auto;
+  text-align: center;
+}
+
+.user-introduction {
+  border: 1px solid rgb(160, 160, 160);
+  border-radius: 15px;
+  height: 400px;
+  width: 1200px;
+  padding: 10px;
+  margin-top: 80px;
+  white-space: pre-wrap;
+  overflow: auto;
+}
+
 .card-wrapper {
   display: flex;
   flex-wrap: wrap;
@@ -632,6 +681,28 @@ header {
   margin-top: 50px;
 }
 
+.dm-btn-form {
+  width: 100%;
+  text-align: center;
+}
+
+.button-4 {
+  display: inline-block;
+  padding: 0.4em 1.6em;
+  font-size: 0.8em;
+  color: #fff;
+  text-decoration: none;
+  user-select: none;
+  background: #00b5ad;
+  border: 1px #00b5ad solid;
+  border-radius: 3px;
+  box-shadow: 0 3px 3px 0 rgba(0, 0, 0, 0.14), 0 1px 2px 0 rgba(0, 0, 0, 0.12);
+  transition: 0.2s ease;
+}
+
+.button-4:hover {
+  box-shadow: 0 3px 6px 0 rgba(0, 0, 0, 0.2), 0 1px 8px 0 rgba(0, 0, 0, 0.12);
+}
 
 
 

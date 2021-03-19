@@ -17,7 +17,7 @@
   </div>
 </header>
 
-<%= form_with model: current_user, user_path(current_user.id) %>
+<%= form_with model: current_user, url: user_path(current_user.id), local: true do |f| %>
     プロフィール画像
   <div class="field">
     <%= f.file_field :user_image, class:"user-image" %>  
@@ -29,8 +29,8 @@
   </div>
 
    <div class="field">
-     <%= f.label :portfolio_type, class:"portfolio-type-box" %><br />
-     <%= f.collection_select(:portfolio_type, Type.all, :id, :name, {prompt: "---" }, {class:"select-box", id:"item-category"}) %>
+     <%= f.label :type_id, class:"portfolio-type-box" %><br />
+     <%= f.collection_select(:type_id, Type.all, :id, :name, {prompt: "---" }, {class:"select-box", id:"item-category"}) %>
    </div>
 
   <div class="field">
@@ -59,11 +59,11 @@
   </div>
 
   <div class="field">
-    <%= f.label :introduce %><br />
-    <%= f.text_area :introduce, class:"introduce-box" %>
+    <%= f.label :introduction %><br />
+    <%= f.text_area :introduction, class:"introduce-box" %>
   </div>
 
   <div class="actions">
-    <%= f.submit "Sign up", class:"edit-finish button-pulse" %>
+    <%= f.submit "Update", class:"edit-finish button-pulse" %>
   </div>
 <% end %>
