@@ -5,54 +5,76 @@
     </div>
     <nav class="header-nav">
       <div class="header-btn">
-          <%= link_to "All portfolios", portfolios_path, class:"button-pulse index-btn" %>
-          <%= link_to "My page", company_path(current_company.id), class:"button-pulse logout-btn" %>
-          <%= link_to "Log out", destroy_company_session_path, method: :delete, class:"button-pulse logout-btn" %>
+          <%= link_to "投稿一覧", portfolios_path, class:"button-pulse index-btn" %>
+          <%= link_to "マイページ", company_path(current_company.id), class:"button-pulse logout-btn" %>
+          <%= link_to "ログアウト", destroy_company_session_path, method: :delete, class:"button-pulse logout-btn" %>
       </div>
     </nav>
   </div>
 </header>
 
-<div class="company-edit-all">
-<%= form_with model: @company, local: true do |f| %>
-  <div class="company-edit-box">
-    <div class="field">
-      <%= f.label :company_name %><br />
-      <%= f.text_field :company_name %>
-    </div>
 
-    <div class="field">
-      <%= f.label :company_phone %><br />
-      <%= f.text_field :company_phone %>
-    </div>
 
-    <div class="field">
-      <%= f.label :postal_code %><br />
-      <%= f.text_field :postal_code %>
-    </div>
+<div class="box-wrapper new-registration-box">
+  <div class="box">
+    <div class="box-inner">
+      <%= form_with model: @company, local: true do |f| %>
 
-    <div class="field">
-      <%= f.collection_select(:prefecture_id, Prefecture.all, :id, :name, {prompt: "---" }) %>
-    </div>
+        <div class="box-email">
+          <%= f.label :メールアドレス, "email" %><br />
+          <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
+        </div>
 
-    <div class="field">
-      <%= f.label :municipalities %><br />
-      <%= f.text_field :municipalities %>
-    </div>
+        <div class="box-password">
+          <%= f.label :パスワード %><br />
+          <%= f.password_field :password, autocomplete: "current-password" %>
+        </div>
 
-    <div class="field">
-      <%= f.label :house_number %><br />
-      <%= f.text_field :house_number %>
-    </div>
+        <div class="box-password">
+          <%= f.label :確認用パスワード %><br />
+          <%= f.password_field :password, autocomplete: "current-password" %>
+        </div>
 
-    <div class="field">
-      <%= f.label :building %><br />
-      <%= f.text_field :building %>
-    </div>
+        <div class="box-company">
+          <%= f.label :企業名 %><br />
+          <%= f.text_field :company_name %>
+        </div>
+      
+        <div class="box-company">
+          <%= f.label :電話番号 %><br />
+          <%= f.text_field :company_phone %>
+        </div>
+      
+        <div class="box-company">
+          <%= f.label :郵便番号 %><br />
+          <%= f.text_field :postal_code %>
+        </div>
+      
+        <div class="box-company prefecture-box">
+          <%= f.label :都道府県 %><br />
+          <%= f.collection_select(:prefecture_id, Prefecture.all, :id, :name, {prompt: "---" }) %>
+        </div>
+      
+        <div class="box-company">
+          <%= f.label :市町村 %><br />
+          <%= f.text_field :municipalities %>
+        </div>
+      
+        <div class="box-company">
+          <%= f.label :番地 %><br />
+          <%= f.text_field :house_number %>
+        </div>
+      
+        <div class="box-company">
+          <%= f.label :建物名 %><br />
+          <%= f.text_field :building %>
+        </div>
 
-    <div class="actions">
-      <%= f.submit "Update", class:"edit-finish button-pulse" %>
+        <div class="edit-done">
+          <%= f.submit "更新", class:"hover-effect_slide new-registration-btn" %>
+        </div>
+      <% end %>
+
     </div>
   </div>
-<% end %>
 </div>

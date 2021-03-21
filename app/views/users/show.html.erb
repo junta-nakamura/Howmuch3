@@ -6,16 +6,16 @@
     <nav class="header-nav">
     <% if user_signed_in? %>
       <div class="header-btn">
-        <%= link_to "New portfolio", new_portfolio_path, class:"button-pulse logout-btn" %>
-        <%= link_to "Chat room", rooms_path, class:"button-pulse index-btn" if @userRooms.present? %>
-        <%= link_to "Log out", destroy_user_session_path, method: :delete, class:"button-pulse logout-btn" %>
+        <%= link_to "新規投稿", new_portfolio_path, class:"button-pulse logout-btn" %>
+        <%= link_to "チャットルーム", rooms_path, class:"button-pulse index-btn" if @userRooms.present? %>
+        <%= link_to "ログアウト", destroy_user_session_path, method: :delete, class:"button-pulse logout-btn" %>
       </div>
     <% else company_signed_in? %>
       <div class="header-btn">  
-        <%= link_to "All portfolios", portfolios_path, class:"button-pulse index-btn" %>
-        <%= link_to "Chat room", rooms_path, class:"button-pulse index-btn" if @companyRooms.present? %>
-        <%= link_to "My page", company_path(current_company.id), class:"button-pulse mypage-btn" %>
-        <%= link_to "Log out",  destroy_company_session_path, method: :delete, class:"button-pulse logout-btn" %>
+        <%= link_to "投稿一覧", portfolios_path, class:"button-pulse index-btn" %>
+        <%= link_to "チャットルーム", rooms_path, class:"button-pulse index-btn" if @companyRooms.present? %>
+        <%= link_to "マイページ", company_path(current_company.id), class:"button-pulse mypage-btn" %>
+        <%= link_to "ログアウト",  destroy_company_session_path, method: :delete, class:"button-pulse logout-btn" %>
       </div>
      <% end %>
       </div>  
@@ -26,37 +26,43 @@
 <div class="user-header">
   <div class="left-user-header">
     <div class="user-icon">
-      <%= image_tag @user.user_image.variant(resize_to_limit: [250, 250]) if @user.user_image.attached? %>
+      <%= image_tag @user.user_image.variant(resize_to_limit: [250, 250]), class:"user-icon-round" if @user.user_image.attached? %>
     </div>
     <div class="user-nickname">
       <%= @user.nickname %>
     </div>
-    <div class="user-type">
-      <%= @user.type.name %>
+    <div class="user-type-image">
+      <i class="fas fa-laptop"></i>
+      <span class="user-type">
+        <%= @user.type.name %>
+      </span>
     </div>
     <% if @user == current_user %>
       <div class="user-btn-groups">
-        <%= link_to "Edit", edit_user_path(@user), class:"edit-btn button-fill" %>
+        <%= link_to "編集", edit_user_path(@user), class:"edit-btn button-fill" %>
       </div>
     <% end %>
+    
     <% if company_signed_in? %>
       <% if @haveRoom == true %>
       <div class="dm-btn-form">
-        <%= link_to "ダイレクトメッセージ", room_path(@roomId), class:"button-4 dm-btn" %>
+        <%= link_to "DMを送る", room_path(@roomId), class:"button-4 dm-btn" %>
       </div>  
-      <% elsif %>
+      <% else %>
         <%= form_with model: @room, url: rooms_path, class:"dm-btn-form", local: true do |f| %>
          <%= f.hidden_field :user_id, value: @user.id %>
          <%= f.hidden_field :company_id, value: current_company.id %>  
-        <%= f.submit "ダイレクトメッセージ", class:"button-4 dm-btn" %>
+        <%= f.submit "DM送る", class:"button-4 dm-btn" %>
         <% end %>
       <% end %>
-    <% end %>    
+    <% end %>
   </div>
 
   <div class="right-user-header">
     <div class="user-introduction">
-      <%= @user.introduction %>
+      <blockquote class="simple-quote">
+        <p><%= @user.introduction %></p>
+      </blockquote>
     </div>
   </div>
 </div>

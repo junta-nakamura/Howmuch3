@@ -17,6 +17,5 @@ Rails.application.routes.draw do
     
     resources :rooms, only: [:create,:show, :index] do
       resources :messages, only: [:create]
-      resources :company_messages, only: [:create]
     end
 end

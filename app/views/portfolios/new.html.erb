@@ -5,8 +5,8 @@
     </div>
     <nav class="header-nav">
       <div class="header-btn">
-          <%= link_to "My page", user_path(current_user.id), class:"button-pulse mypage-btn" %>
-          <%= link_to "Log out",  destroy_company_session_path, method: :delete, class:"button-pulse logout-btn" %>
+          <%= link_to "マイページ", user_path(current_user.id), class:"button-pulse mypage-btn" %>
+          <%= link_to "ログアウト",  destroy_company_session_path, method: :delete, class:"button-pulse logout-btn" %>
       </div>  
     </nav>
   </div>
@@ -23,17 +23,17 @@
     </div>
 
     <div class="field">
-      <%= f.label :portfolio_name, class:"portfolio-name-box" %><br />
+      <%= f.label :タイトル, class:"portfolio-name-box" %><br />
       <%= f.text_field :portfolio_name, class:"portfolio-name-field", maxlength: "40" %>
     </div>
 
     <div>
-      <%= f.label :detail, class:"portfolio-detail-box" %><br />
+      <%= f.label :詳細, class:"portfolio-detail-box" %><br />
       <%= f.text_area :detail, class:"field detail-field" %>
     </div>
 
     <div class="field">
-      <%= f.label :type_id, class:"portfolio-type-box" %><br />
+      <%= f.label :種類, class:"portfolio-type-box" %><br />
       <%= f.collection_select(:type_id, Type.all, :id, :name, {prompt: "---" }, {class:"select-box", id:"item-category"}) %>
     </div>
 

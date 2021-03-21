@@ -5,8 +5,8 @@
     </div>
     <nav class="header-nav">
       <div class="header-btn">
-          <%= link_to "My page", company_path(current_company.id), class:"button-pulse mypage-btn" %>
-          <%= link_to "Log out",  destroy_company_session_path, method: :delete, class:"button-pulse logout-btn" %>
+          <%= link_to "マイページ", company_path(current_company.id), class:"button-pulse mypage-btn" %>
+          <%= link_to "ログアウト",  destroy_company_session_path, method: :delete, class:"button-pulse logout-btn" %>
       </div>  
     </nav>
   </div>
@@ -34,7 +34,7 @@
       <div class="card-detail">
         <%= portfolio.detail %>
       </div>
-      <div class="next-to btn">
+      <div class="next-to-btn">
         <%= link_to "続きを読む", portfolio_path(portfolio), class:"content-3" %>
       </div>
     </div>

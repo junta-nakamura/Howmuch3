@@ -1,0 +1,17 @@
+<div class="message-wrapper">
+  <div class="message">
+     <div class="message-user">
+     <% if message.company.present? %>
+        <%= message.company.company_name %>
+      <% elsif message.user.present? %>  
+        <%= message.user.nickname %>
+      <% end %>
+     </div>
+     <div class="message-content">
+       <%= message.content %>
+     </div>
+     <div class="message-date">
+       <%= message.created_at %>
+     </div>
+  </div>
+</div>

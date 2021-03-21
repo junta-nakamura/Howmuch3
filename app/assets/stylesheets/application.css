@@ -102,6 +102,7 @@ input, select {
 .header-3 {
   box-sizing: border-box;
   width: 100%;
+  font-weight: bold;
 }
 
 .header-inner {
@@ -200,6 +201,7 @@ input, select {
   padding: 300px;
   font-size: 100px;
   color: #757575;
+  background-image: url('/assets/images/スクリーンショット 2021-02-27 18.35.04')
 }
 
 
@@ -301,6 +303,143 @@ input, select {
 
 
 
+/* 企業ログイン */
+.box-wrapper {
+  margin-top: 170px;
+  width: 100vw;
+  display: flex;
+  justify-content: center;
+}
+
+* {
+  margin: 0px;
+  padding: 0px;
+  text-decoration: none;
+}
+.box {
+  width: 450px;
+  height: 450px;
+  margin: 60px auto 0;
+  border-radius: 4px;
+  border: 1px #ddd solid;
+}
+
+.box-inner {
+  padding: 20px 26px;
+  margin: auto;
+}
+
+h1 {
+  font-weight: 400;
+  font-size: 28px;
+  line-height: 1.2;
+  margin-bottom: 10px;
+  padding-bottom: 4px;
+  color: #111111;
+}
+
+.box-email {
+  margin-bottom: 13px;
+}
+
+.box-password {
+  margin-bottom: 22px;
+}
+
+.box-email label, .box-password label {
+  font-weight: 700;
+  font-size: 13px;
+  padding-left: 2px;
+  padding-bottom: 2px;
+}
+
+.box-email input[type="email"], .box-password input[type="password"] {
+  border-style: none;
+  box-sizing: border-box;
+  width: 100%;
+  height: 31px;
+  border: 1px solid #a6a6a6;
+  box-shadow: 0 1px 0 rgba(0,0,0,.07) inset;
+  border-radius: 3px;
+  padding: 0 7px;
+}
+
+.column-left {
+  float: left;
+}
+
+.column-right {
+  float: right;
+}
+
+.box-password a {
+  font-size: 13px;
+}
+
+.box-login {
+  margin-bottom: 26px;
+}
+
+.box-login input[type="submit"] {
+  border-style: none;
+  width: 100%;
+  height: 31px;
+  border-radius: 3px;
+  border: 1px #00b5ad solid;
+  background-color: #00b5ad;
+  color: white;
+}
+
+.box-login input[type="submit"]:hover {
+  cursor: pointer;
+  background: #00b5ad;
+  color: white;
+}
+
+.legal-text {
+  margin-top: 18px;
+  font-size: 12px;
+}
+
+.remember {
+  font-size: 13px;
+  margin-top: 18px;
+  padding-left: 3px;
+}
+
+.box-newusr p {
+  text-align: center;
+  font-size: 12px;
+  color: #767676;
+  margin-bottom: 14px;
+}
+
+.box-newusr p span {
+  text-decoration: line-through;
+  text-decoration-color: #e7e7e7;
+}
+
+.box-newusr a {
+  display: block;
+  width: 100%;
+  height: 31px;
+  font-size: 13px;
+  color: #111;
+  line-height: 31px;
+  text-align: center;
+  background: linear-gradient(to bottom,#f7f8fa,#e7e9ec);
+  border-radius: 3px;
+  border: 1px #a2a6ac solid;
+}
+
+.box-newusr a:hover {
+  background: #e7e9ec;
+}
+
+
+
+
+
 /* ログイン後 ヘッダー */
 .header-btn {
   margin-top: 40px;
@@ -357,7 +496,7 @@ input, select {
 }
 
 .action-field {
-  margin: 10px 0 60px;
+  margin: 30px 0 60px;
   padding: 8px;
   border: 1px solid #00b5ad;
   color: #00b5ad;
@@ -432,6 +571,10 @@ input, select {
   height: auto;
 }
 
+.portfolio-detail-box {
+  height: auto;
+}
+
 .btn-groups {
   margin: 100px auto 100px;
   text-align: center;
@@ -482,6 +625,7 @@ input, select {
 
 .detail-show-box {
   white-space: pre-wrap;
+  width: 800px;
 }
 
 .user-detail-open {
@@ -576,6 +720,7 @@ header {
 
 .user-header {
   display: flex;
+  height: auto;
 }
 
 .left-user-header {
@@ -594,10 +739,10 @@ header {
 
 .user-nickname {
   margin: 0 auto;
-  /* text-align: center; */
+  text-align: center;
   width: auto;
   max-width: 370px;
-  font-size: 15px;
+  font-size: 22px;
   text-align: center;
   white-space: nowrap;
   overflow: hidden;
@@ -605,8 +750,14 @@ header {
 }
 
 .user-type {
-  margin: 10px auto;
   text-align: center;
+  margin-left: 20px;
+}
+
+.user-type-image {
+  margin: 15px;
+  display: flex;
+  justify-content: center;
 }
 
 .user-btn-groups {
@@ -615,12 +766,13 @@ header {
 }
 
 .user-introduction {
-  border: 1px solid rgb(160, 160, 160);
+  /* border: 1px solid rgb(160, 160, 160); */
   border-radius: 15px;
-  height: 400px;
+  height: auto;
+  max-height: 400px;
   width: 1200px;
-  padding: 10px;
-  margin-top: 80px;
+  padding: 0 10px;
+  margin-top: 50px;
   white-space: pre-wrap;
   overflow: auto;
 }
@@ -653,6 +805,8 @@ header {
 .content-3 {
   color: #00b5ad;
   cursor: pointer;
+  text-decoration: none;
+  text-decoration-color: #e7e7e7;
 }
 
 .content-3:hover {
@@ -686,6 +840,13 @@ header {
   justify-content: center;
 }
 
+.user-icon-round {
+  border-radius: 50%;
+  width: 200px;
+  height: 200px;
+  object-fit: cover;
+}
+
 .next-to-btn {
   margin-top: 50px;
 }
@@ -710,8 +871,25 @@ header {
 }
 
 .button-4:hover {
+  color: white;
+  text-decoration: none;
   box-shadow: 0 3px 6px 0 rgba(0, 0, 0, 0.2), 0 1px 8px 0 rgba(0, 0, 0, 0.12);
 }
+
+.simple-quote {
+  border: 1px solid #f6f7fc;
+  border-radius: 20px;
+  margin: 0;
+  padding: 1.6em; 
+  color: #323232;
+  background: #f6f7fc;
+}
+.simple-quote > * {
+  margin: 0;
+}
+
+
+
 
 
 
@@ -783,6 +961,97 @@ header {
 .introduce-box {
   overflow: auto;
   resize: none;
-  width: 800px;
-  height: 500px;
+  width: 600px;
+  height: 200px;
+  padding: 10px;
+}
+
+.new-registration-box {
+  margin: 50px auto;
+}
+
+.box-company label, .box-user label {
+  font-weight: 700;
+  font-size: 13px;
+  padding-left: 2px;
+  padding-bottom: 2px;
+}
+
+.box-company input[type="text"], .box-user input[type="text"]{
+  border-style: none;
+  box-sizing: border-box;
+  width: 100%;
+  height: 31px;
+  border: 1px solid #a6a6a6;
+  box-shadow: 0 1px 0 rgba(0,0,0,.07) inset;
+  border-radius: 3px;
+  padding: 0 7px;
+}
+
+.box-company, .box-user {
+  margin-bottom: 13px;
+}
+
+.new-registration-btn {
+  margin-top: 13px;
+}
+
+.prefecture-box{
+  margin-bottom: 13px;
+}
+
+.field input[type="file"]{
+  background-color: white
+}
+
+.profile-image {
+  font-size: 14px;
+  margin-bottom: 5px;
+}
+
+.icon-field {
+  margin-bottom: 13px;
+}
+
+
+
+
+/* 企業編集 */
+.hover-effect_slide {
+  position: relative;
+  display: inline-block;
+  padding: 0.4em 1.6em;
+  font-size: 0.8em;
+  color: #00b5ad;
+  text-decoration: none;
+  user-select: none;
+  border: 1px #00b5ad solid;
+  transition: 0.2s ease;
+  background-color: white ;
+}
+
+.hover-effect_slide::before {
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: -1;
+  width: 0;
+  height: 100%;
+  content: "";
+  background-color: #00b5ad;
+  transition: 0.2s ease;
+}
+
+.hover-effect_slide:hover {
+  color: #fff;
+  background-color: #00b5ad;
+}
+
+.hover-effect_slide:hover::before {
+  width: 100%;
+  background: #00b5ad;
+}
+
+.edit-done {
+  text-align: center;
 }

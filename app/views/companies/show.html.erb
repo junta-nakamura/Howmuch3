@@ -5,9 +5,9 @@
     </div>
     <nav class="header-nav">
       <div class="header-btn">
-          <%= link_to "All portfolios", portfolios_path, class:"button-pulse index-btn" %>
-          <%= link_to "Chat room", rooms_path, class:"button-pulse index-btn" if @companyRooms.present? %>
-          <%= link_to "Log out",  destroy_company_session_path, method: :delete, class:"button-pulse logout-btn" %>
+          <%= link_to "投稿一覧", portfolios_path, class:"button-pulse index-btn" %>
+          <%= link_to "チャットルーム", rooms_path, class:"button-pulse index-btn" if @companyRooms.present? %>
+          <%= link_to "ログアウト",  destroy_company_session_path, method: :delete, class:"button-pulse logout-btn" %>
       </div>
     </nav>
   </div>
@@ -44,7 +44,7 @@
   </ul>
   <% if @company.id == current_company.id %>
     <div class="btn-groups">
-      <%= link_to "Edit", edit_company_path(current_company.id), class:"edit-btn button-fill" %>
+      <%= link_to "編集", edit_company_path(current_company.id), class:"edit-btn button-fill" %>
     </div> 
   <% end %>
 </div>

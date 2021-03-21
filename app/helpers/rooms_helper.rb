@@ -1,24 +1,10 @@
 module RoomsHelper
 
-  def message_lists(messages, companyMessages)
-    html = ''
-    message_box = []
-    
-    messages.each do |message|
-      message_box.push(message)
-    end
-    companyMessages.each do |company_message|
-      message_box.push(company_message)
-    end
-    
-    message_box.sort do |a, b|
-      b[:created_at] <=> a[:created_at]
-    end
-
-    message_box.each do |chats|
-      html += render(partial: 'room', locals: {chats: chats})
-      return raw(html)
-    end
-  end
+  # def message_lists(messages)
+  #   html = ''
+  #   # messages.each do |message|
+  #   html += render(partial: 'room', collection: messages)
+  #   return raw(html)
+  # end
 
 end

@@ -1,12 +1,11 @@
 class CompanyMessagesController < ApplicationController
 
   def create
-    @companyMessage = CompanyMessage.create(company_message_params)
-    if @companyMessage
-      binding.pry
+    @companyMessage = CompanyMessage.new(company_message_params)
+    if @companyMessage.save
       redirect_to room_path(@companyMessage.room_id)
     else
-      render room_path(@companyMessage.room_id)
+      render "rooms/show"
     end
   end
 
@@ -16,3 +15,4 @@ class CompanyMessagesController < ApplicationController
   end
 
 end
+  

@@ -6,15 +6,15 @@
     <nav class="header-nav">
     <% if user_signed_in?  %>
       <div class="header-btn">
-        <%= link_to "New portfolio", new_portfolio_path, class:"button-pulse logout-btn" %>
-        <%= link_to "My page", user_path(current_user.id), class:"button-pulse mypage-btn" %>
-        <%= link_to "Log out", destroy_user_session_path, method: :delete, class:"button-pulse logout-btn" %>
+        <%= link_to "新規投稿", new_portfolio_path, class:"button-pulse logout-btn" %>
+        <%= link_to "マイページ", user_path(current_user.id), class:"button-pulse mypage-btn" %>
+        <%= link_to "ログアウト", destroy_user_session_path, method: :delete, class:"button-pulse logout-btn" %>
       </div>
     <% else company_signed_in? %>
       <div class="header-btn">  
-        <%= link_to "All portfolios", portfolios_path, class:"button-pulse index-btn" %>
-        <%= link_to "My page", company_path(current_company.id), class:"button-pulse mypage-btn" %>
-        <%= link_to "Log out",  destroy_company_session_path, method: :delete, class:"button-pulse logout-btn" %>
+        <%= link_to "投稿一覧", portfolios_path, class:"button-pulse index-btn" %>
+        <%= link_to "マイページ", company_path(current_company.id), class:"button-pulse mypage-btn" %>
+        <%= link_to "ログアウト",  destroy_company_session_path, method: :delete, class:"button-pulse logout-btn" %>
         <%# 戻るボタンも必要 %>
       </div>
      <% end %>
@@ -23,21 +23,12 @@
   </div>
 </header>
 
-<%= message_lists(@messages, @companyMessages) %>
+<%= render partial: "message", collection: @messages %>
 
-<% if company_signed_in? %>
-  <%= form_with model: @message, url: room_company_messages_path(@room.id), local: true do |f| %>
+<% if company_signed_in? || user_signed_in? %>
+  <%= form_for @message, url: room_messages_path(@room.id) do |f| %>
     <%= f.text_field :content, placeholder: "メッセージを入力して下さい" %>
     <%= f.hidden_field :room_id, value: @room.id %>
-    <%= f.hidden_field :company_id, value: current_company.id %>
-    <%= f.submit "送信" %>
-  <% end %>
-<% elsif user_signed_in? %>
-  <%= form_with model: @companyMessage, url: room_messages_path(@room.id), local: true do |f| %>
-    <%= f.text_field :content, placeholder: "メッセージを入力して下さい" %>
-    <%= f.hidden_field :room_id, value: @room.id %>
-    <%= f.hidden_field :company_id, value: current_user.id %>
     <%= f.submit "送信" %>
   <% end %>
 <% end %>
-

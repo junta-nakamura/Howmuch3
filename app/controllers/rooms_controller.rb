@@ -2,11 +2,13 @@ class RoomsController < ApplicationController
   before_action :authenticate_company!, only: [:create]
 
   def index
-    if company_signed_in?
-      @companyRooms = current_company.rooms.includes(:company_messages).order("messages.created_at desc")
-    elsif user_signed_in?
-      @userRooms = current_user.rooms.includes(:messages).order("messages.created_at desc")
+    if user_signed_in?
+      @rooms = Room.where(user_id: current_user.id)
+    elsif company_signed_in?
+      @rooms = Room.where(company_id: current_company.id)
     end
+
+    @message = Message.new
   end
 
   def create
@@ -21,14 +23,8 @@ class RoomsController < ApplicationController
 
   def show
     @room = Room.find(params[:id])
-    # if Room.where(id: @room.id, company_id: current_company.id).present?
-    @messages = @room.messages.includes(:user).order("created_at asc")
-    @companyMessages = @room.company_messages.includes(:company).order("created_at asc")
+    @messages = @room.messages.includes(:user, :company).order("created_at asc")
     @message = Message.new
-    @companyMessage = CompanyMessage.new
-    # else
-    #   redirect_back(fallback_location: root_path)
-    # end
   end   
 
   private

@@ -6,10 +6,10 @@
     <nav class="header-nav">
     <% if user_signed_in? %>
       <div class="header-btn">
-        <%= link_to "New portfolio", new_portfolio_path, class:"button-pulse logout-btn" %>
-        <%= link_to "Chat room", rooms_path, class:"button-pulse index-btn" if @userRooms.present? %>
-        <%= link_to "My page", user_path(current_user.id), class:"button-pulse mypage-btn" %>
-        <%= link_to "Log out", destroy_user_session_path, method: :delete, class:"button-pulse logout-btn" %>
+        <%= link_to "新規投稿", new_portfolio_path, class:"button-pulse logout-btn" %>
+        <%= link_to "チャットルーム", rooms_path, class:"button-pulse index-btn" if @userRooms.present? %>
+        <%= link_to "マイページ", user_path(current_user.id), class:"button-pulse mypage-btn" %>
+        <%= link_to "ログアウト", destroy_user_session_path, method: :delete, class:"button-pulse logout-btn" %>
       </div>
      <% end %>
       </div>  
@@ -64,6 +64,6 @@
   </div>
 
   <div class="actions">
-    <%= f.submit "Update", class:"edit-finish button-pulse" %>
+    <%= f.submit "更新", class:"edit-finish button-pulse" %>
   </div>
 <% end %>

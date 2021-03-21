@@ -6,18 +6,61 @@
     <nav class="header-nav">
     <% if user_signed_in? %>
         <div class="header-btn">
-          <%= link_to "New portfolio", new_portfolio_path, class:"button-pulse logout-btn" %>
-          <%= link_to "My page", user_path(current_user.id), class:"button-pulse mypage-btn" %>
-          <%= link_to "Log out", destroy_user_session_path, method: :delete, class:"button-pulse logout-btn" %>
+          <%= link_to "新規投稿", new_portfolio_path, class:"button-pulse logout-btn" %>
+          <%= link_to "マイページ", user_path(current_user.id), class:"button-pulse mypage-btn" %>
+          <%= link_to "ログアウト", destroy_user_session_path, method: :delete, class:"button-pulse logout-btn" %>
         </div>
     <% elsif company_signed_in? %>
       <div class="header-btn">  
-        <%= link_to "All portfolios", portfolios_path, class:"button-pulse index-btn" %>
-        <%= link_to "My page", company_path(current_company.id), class:"button-pulse mypage-btn" %>
-        <%= link_to "Log out", destroy_company_session_path, method: :delete, class:"button-pulse logout-btn" %>
+        <%= link_to "投稿一覧", portfolios_path, class:"button-pulse index-btn" %>
+        <%= link_to "マイページ", company_path(current_company.id), class:"button-pulse mypage-btn" %>
+        <%= link_to "ログアウト", destroy_company_session_path, method: :delete, class:"button-pulse logout-btn" %>
       </div>
     <% end %>
     </nav>
   </div>
 </header>
 
+<div class="room-all-content">
+  <div class="side-bar">
+    <div class="room-box">
+      <div class="room">
+        <div class="room-left">
+          <div class="chat-partner-image"></div>
+        </div>
+        <div class="room-right">
+          <div class="chat-partner-name"></div>
+          <div class="chat-content"></div>
+          <div class="chat-date"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="main-content">
+    <div class="chat-content-box">
+      <div class="chat-box">
+        <div class="chat-left">
+          <div class="chat-partner-image">
+        </div>
+        <div class="chat-right">
+          <div class="chat-message-box">
+            <div class="chat-message-user"></div>
+            <div class="chat-message-content"></div>
+            <div class="chat-message-date"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <%= form_with model: [@rooms, @message], url: rooms_path, class: 'form', local: true do |f| %>
+      <div class="form-input">
+        <%= f.text_field :content, class: 'form-message', placeholder: 'type a message' %>
+        <label class="form-image">
+          <span class="image-file">画像</span>
+          <%= f.file_field :image, class: 'hidden' %>
+        </label>
+      </div>
+      <%= f.submit '送信', class: 'form-submit' %>
+    <% end %>
+  </div>
+</div>
