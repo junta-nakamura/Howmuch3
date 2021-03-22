@@ -4,16 +4,18 @@
       <div class="howmuch-logo">How much</div>
     </div>
     <nav class="header-nav">
-    <% if user_signed_in? && current_user.id == @current_user.id %>
+    <% if user_signed_in? %>
       <div class="header-btn">
-        <%= link_to "New portfolio", new_portfolio_path, class:"button-pulse logout-btn" %>
-        <%= link_to "Log out", destroy_user_session_path, method: :delete, class:"button-pulse logout-btn" %>
+        <%= link_to "新規投稿", new_portfolio_path, class:"button-pulse logout-btn" %>
+        <%= link_to "チャット", rooms_path, class:"button-pulse index-btn" if @user.rooms.present? %>
+        <%= link_to "ログアウト", destroy_user_session_path, method: :delete, class:"button-pulse logout-btn" %>
       </div>
     <% else company_signed_in? %>
       <div class="header-btn">  
-        <%= link_to "All portfolios", portfolios_path, class:"button-pulse index-btn" %>
-        <%= link_to "My page", company_path(current_company.id), class:"button-pulse mypage-btn" %>
-        <%= link_to "Log out",  destroy_company_session_path, method: :delete, class:"button-pulse logout-btn" %>
+        <%= link_to "投稿一覧", portfolios_path, class:"button-pulse index-btn" %>
+        <%= link_to "チャット", rooms_path, class:"button-pulse index-btn" if @companyRooms.present? %>
+        <%= link_to "マイページ", company_path(current_company.id), class:"button-pulse mypage-btn" %>
+        <%= link_to "ログアウト",  destroy_company_session_path, method: :delete, class:"button-pulse logout-btn" %>
       </div>
      <% end %>
       </div>  
@@ -21,42 +23,71 @@
   </div>
 </header>
 
+<div class="user-header">
+  <div class="left-user-header">
+    <div class="user-icon">
+      <%= image_tag @user.user_image.variant(resize_to_limit: [250, 250]), class:"user-icon-round" if @user.user_image.attached? %>
+    </div>
+    <div class="user-nickname">
+      <%= @user.nickname %>
+    </div>
+    <div class="user-type-image">
+      <i class="fas fa-laptop"></i>
+      <span class="user-type">
+        <%= @user.type.name %>
+      </span>
+    </div>
+    <% if @user == current_user %>
+      <div class="user-btn-groups">
+        <%= link_to "編集", edit_user_path(@user), class:"edit-btn button-fill" %>
+      </div>
+    <% end %>
+    
+    <% if company_signed_in? %>
+      <% if @haveRoom == true %>
+      <div class="dm-btn-form">
+        <%= link_to "DMを送る", room_path(@roomId), class:"button-4 dm-btn" %>
+      </div>  
+      <% else %>
+        <%= form_with model: @room, url: rooms_path, class:"dm-btn-form", local: true do |f| %>
+         <%= f.hidden_field :user_id, value: @user.id %>
+         <%= f.hidden_field :company_id, value: current_company.id %>  
+        <%= f.submit "DM送る", class:"button-4 dm-btn" %>
+        <% end %>
+      <% end %>
+    <% end %>
+  </div>
+
+  <div class="right-user-header">
+    <div class="user-introduction">
+      <blockquote class="simple-quote">
+        <p><%= @user.introduction %></p>
+      </blockquote>
+    </div>
+  </div>
+</div>
+
+
 <div class="card-wrapper">
-  <% @my_portfolios.each do |my_portfolio| %>
+  <% @myPortfolios.each do |portfolio| %>
   <div class="card-value">
     <div class="image-wrapper">
       <div class="card-image">
-        <%= image_tag my_portfolio.images[0].variant(resize_to_limit: [300, 300]) %>
+        <%= image_tag portfolio.images[0].variant(resize_to_limit: [300, 300]), class:"portfolio-image" %>
        </div>
     </div>  
 
     <div class="content-wrapper">
       <div class="card-title">
-        <div class="content-1"><%= my_portfolio.portfolio_name %></div>
+        <div class="content-1"><%= portfolio.portfolio_name %></div>
       </div>
       <div class="card-detail">
-        <%= my_portfolio.detail %>
+        <%= portfolio.detail %>
       </div>
-      <div class="next-to btn">
-        <%= link_to "全体を表示する", portfolio_path(my_portfolio), class:"content-3" %>
+      <div class="next-to-btn">
+        <%= link_to "詳細を表示する", portfolio_path(portfolio), class:"content-3" %>
       </div>
     </div>
   </div>
   <% end %>
 </div>
-
-
-<% if company_signed_in? %>
-  <% if @haveRoom == true  %>
-    <%= link_to "ダイレクトメッセージ", room_path(@roomId) %>
-  <% else %>
-    <%= form_for @room do |f| %>
-      <%= fields_for @entry do |m| %>
-        <%= m.hidden_field :user_id, value: @user.id %>
-        <%= m.hidden_field :company_id, value: current_company.id %>
-        <%# <%= m.hidden_field :room_id, value: @roomcount+1 %>
-      <% end %>  
-      <%= f.submit "ダイレクトメッセージ" %>
-    <% end %>
-  <% end %>
-<% end %>

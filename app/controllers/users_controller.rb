@@ -1,36 +1,43 @@
 class UsersController < ApplicationController
+  before_action :authenticate_user!, only: [:edit, :update]
 
   def show
     if user_signed_in?
       @user = current_user
-      portfolios = Portfolio.all
-      @my_portfolios = @user.portfolios
+      @myPortfolios = Portfolio.where(user_id: current_user.id)
     elsif company_signed_in?
       @user = User.find(params[:id])
-      @portfolios = Portfolio.all
-      @my_portfolios = @portfolios.where(user_id: @user.id)
-      
-      @currentCompanyEntry = Entry.where(company_id: current_company.id)
-      @userEntry = Entry.where(user_id: @user.id)
-      # unless @user.id == current_company.id
-      @currentCompanyEntry.each do |cc|
-        @userEntry.each do |u|
-          if cc.room_id == u.room_id then
-            @haveRoom = true
-            @roomId = cc.room_id
-          end
-        end
-      end 
-      unless @haveRoom
+      @myPortfolios = Portfolio.where(user_id: @user.id)
+      @roomMatch = Room.where(company_id: current_company.id).where(user_id: @user.id)
+      @companyRooms = Room.where(company_id: current_company.id) 
+      if @roomMatch.present?
+        @haveRoom = true
+        @roomId = @roomMatch.ids
+      else
         @room = Room.new
-        @entry = Entry.new
       end
     else
       @user = User.find(params[:id])
-      @portfolios = Portfolio.all
-      @my_portfolios = @portfolios.where(user_id: @user.id)
+      @myPortfolios = Portfolio.includes(:user)
     end
   end
 
+  def edit
+    if user_signed_in?
+      @userRooms = Room.where(user_id: current_user.id)
+    end
+  end
 
+  def update
+    if current_user.update(user_params)
+      redirect_to user_path(current_user)
+    else
+      render :edit
+    end
+  end
+
+  private
+  def user_params
+    params.require(:user).permit(:nickname, :last_name, :first_name, :last_name_kana, :first_name_kana, :birthday, :user_image, :type_id, :introduction)
+  end
 end

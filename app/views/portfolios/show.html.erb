@@ -6,15 +6,17 @@
     <nav class="header-nav">
     <% if company_signed_in? %>
       <div class="header-btn">
-        <%= link_to "All portfolios", portfolios_path, class:"button-pulse index-btn" %>
-        <%= link_to "My page", company_path(current_company.id), class:"button-pulse mypage-btn" %>
-        <%= link_to "Log out",  destroy_company_session_path, method: :delete, class:"button-pulse logout-btn" %>
+        <%= link_to "投稿一覧", portfolios_path, class:"button-pulse index-btn" %>
+        <%= link_to "チャット", rooms_path, class:"button-pulse logout-btn" if @companyRooms.present? %>
+        <%= link_to "マイページ", company_path(current_company.id), class:"button-pulse mypage-btn" %>
+        <%= link_to "ログアウト",  destroy_company_session_path, method: :delete, class:"button-pulse logout-btn" %>
       </div>  
     <% elsif user_signed_in? %>  
       <div class="header-btn">  
-        <%= link_to "New portfolio", new_portfolio_path, class:"button-pulse logout-btn" %>
-        <%= link_to "My page", user_path(current_user.id), class:"button-pulse mypage-btn" %>
-        <%= link_to "Log out", destroy_user_session_path, method: :delete, class:"button-pulse logout-btn" %>
+        <%= link_to "新規投稿", new_portfolio_path, class:"button-pulse logout-btn" %>
+        <%= link_to "チャット", rooms_path, class:"button-pulse logout-btn" if @userRooms.present? %>
+        <%= link_to "マイページ", user_path(current_user.id), class:"button-pulse mypage-btn" %>
+        <%= link_to "ログアウト", destroy_user_session_path, method: :delete, class:"button-pulse logout-btn" %>
       </div>  
     <% end %>  
     </nav>
@@ -27,18 +29,29 @@
       <%= image_tag @portfolio.images[0].variant(resize_to_limit: [350, 350]), class:"content-image" %>
     </div>
     <div class="content-show-box">
+    <% unless user_signed_in? %>
+      <div class="card-user">
+        <%= @portfolio.user.nickname %>
+      </div>  
+    <% end %>  
       <div class="title-show-box">
         <%= @portfolio.portfolio_name %>
       </div>
-      <%= @portfolio.detail %>
-    </div>
+      <div class="detail-show-box">
+        <blockquote class="simple-quote portfolio-detail-box">
+          <p><%= @portfolio.detail %></p>
+        </blockquote>
+      </div>
     <% if @portfolio.user == current_user %>
     <div class="btn-groups">
-      <%= link_to "Edit", edit_portfolio_path(@portfolio), class:"edit-btn button-fill" %>
-      <%= link_to "Delete", portfolio_path(@portfolio), method: :delete,  class:"delete-btn" %>
+      <%= link_to "編集", edit_portfolio_path(@portfolio), class:"edit-btn button-fill" %>
+      <%= link_to "削除", portfolio_path(@portfolio), method: :delete,  class:"delete-btn" %>
     </div> 
     <% else %>
-      <%= link_to "投稿者詳細", user_path(@portfolio.user_id), class:"button-fill user-detail" %>
+      <div class="user-detail-open">
+        <%= link_to "投稿者詳細", user_path(@portfolio.user_id), class:"button-fill user-detail" %>
+      </div>
     <% end %>
   </div>
 </div>
+

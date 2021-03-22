@@ -1,0 +1,53 @@
+<header class="header-3">
+  <div class="header-inner">
+    <div class="logo">
+      <div class="howmuch-logo">How much</div>
+    </div>
+    <nav class="header-nav">
+    <% if user_signed_in? %>
+        <div class="header-btn">
+          <%= link_to "新規投稿", new_portfolio_path, class:"button-pulse logout-btn" %>
+          <%= link_to "マイページ", user_path(current_user.id), class:"button-pulse mypage-btn" %>
+          <%= link_to "ログアウト", destroy_user_session_path, method: :delete, class:"button-pulse logout-btn" %>
+        </div>
+    <% elsif company_signed_in? %>
+      <div class="header-btn">  
+        <%= link_to "投稿一覧", portfolios_path, class:"button-pulse index-btn" %>
+        <%= link_to "マイページ", company_path(current_company.id), class:"button-pulse mypage-btn" %>
+        <%= link_to "ログアウト", destroy_company_session_path, method: :delete, class:"button-pulse logout-btn" %>
+      </div>
+    <% end %>
+    </nav>
+  </div>
+</header>
+
+<div class="room-all-content">
+  <div class="side-bar">
+    <div class="room-box">
+        <% @rooms.each do |room| %>
+          <%= link_to room_path(room.id), class:"room-link" do %>
+            <div class="room">
+              <div class="room-left">
+                <div class="chat-partner-image">
+                  <%= image_tag room.company.company_image.variant(resize_to_limit: [300, 300]), class:"company-image" if room.company.company_image.attached? %>
+                </div>
+              </div>
+              <div class="room-right">
+                <% if !company_signed_in? %>
+                 <div class="chat-partner-name"><%= room.company.company_name %></div>
+                <% elsif !user_signed_in? %>
+                  <div class="chat-partner-name"><%= room.user.nickname %></div>
+                <% end %>
+                <div class="chat-content"><%= room.messages.order(created_at: :desc).take.try(:content) %></div>
+                <div class="chat-date"><%= l room.messages.order(created_at: :desc).take.try(:created_at) %></div>
+              </div>
+            </div>
+          <% end %>
+        <% end %>  
+    </div>
+  </div>
+  <div class="lets-talk-box">
+      <i class="far fa-comments"></i> 
+      <div class="lets-talk">トークを始めよう！</div>
+  </div>
+</div>

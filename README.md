@@ -12,17 +12,18 @@
 | last_name_kana     | string  | null: false               |  
 | first_name_kana    | string  | null: false               |
 | birthday           | date    | null: false               |
-| entry              | integer | null: false               |
+| type_id            | string  | null: false               |
+| introduction       | text    | null: false               |
 
 ### Association
 
-- has_many: portfolios
-- has_many: messages
-- has_many: entries
+- has_many :portfolios
+- has_many :messages
+- has_many :rooms
 
 
 
-## companyテーブル
+## companiesテーブル
 
 | Column             | Type    | Options                   |
 |------------------- | ------- |-------------------------- |
@@ -35,10 +36,9 @@
 | municipalities     | string  | null: false               |
 | house_number       | string  | null: false               |
 | building           | string  |                           |
-| entry              | integer | null: false               |
 
-- has_many: messages
-- has_many: entries
+- has_many :company_messages
+- has_many :rooms
 
 
 
@@ -57,18 +57,17 @@
 
 
 
-## entriesテーブル
+## roomsテーブル
 
 | Column         | Type       | Options           |
 | -------------- | ---------- | ----------------- |
 | user           | references | foreign_key: true |
 | company        | references | foreign_key: true |
-| room           | references | foreign_key: true |
 
 - belongs_to :user
 - belongs_to :company
-- belongs_to :room
-
+- has_many :messages
+- has_many :company_messages
 
 
 ## messagesテーブル
@@ -76,10 +75,21 @@
 | Column         | Type       | Options           |
 | -------------- | ---------- | ----------------- |
 | user           | references | foreign_key: true |
-| company        | references | foreign_key: true |
 | room           | references | foreign_key: true |
 | content        | text       | null: false       |
 
 - belongs_to :user
+- belongs_to :room
+
+
+
+## company_messagesテーブル
+
+| Column         | Type       | Options           |
+| -------------- | ---------- | ----------------- |
+| company        | references | foreign_key: true |
+| room           | references | foreign_key: true |
+| content        | text       | null: false       |
+
 - belongs_to :company
 - belongs_to :room

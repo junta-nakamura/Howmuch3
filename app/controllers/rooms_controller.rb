@@ -1,31 +1,38 @@
 class RoomsController < ApplicationController
-  before_action :authenticate_company!
+  before_action :authenticate_company!, only: [:create]
+  before_action :ser_rooms, only: [:index, :show]
 
   def index
-    @cc_rooms = current_company.rooms.includes(:messages).order("messages.created_at desc")
+    @message = Message.new
   end
 
   def create
-    @room = Room.create
-    @entryCompany = Entry.create(join_room_params)
-    redirect_to room_path(@room.id)
-    # @first_message = @room.messages.create(company_id: current_company.id, user_id: join_room_params[:user_id], content: "hello world")
+    @room = Room.where(user_id: params[:user_id], company_id: params[:company_id])
+    if @room.present?
+      redirect_to room_path(@room.id)
+    else
+      @room = Room.create(room_params)
+      redirect_to room_path(@room.id)
+    end
   end
 
   def show
     @room = Room.find(params[:id])
-    if Entry.where(company_id: current_company.id, room_id: @room.id).present?
-      @messages = @room.messages.includes(:user, :company).order("created_at asc")
-      @message = Message.new
-      @entries = @room.entries
-    else
-      redirect_back(fallback_location: root_path)
-    end
-  end
+    @messages = @room.messages.includes(:user, :company).order("created_at asc")
+    @message = Message.new
+  end   
 
   private
-  def join_room_params
-    params.require(:entry).permit(:user_id, :company_id, :room_id).merge(room_id: @room.id)
+  def room_params
+    params.require(:room).permit(:user_id, :company_id)
   end
 
+  def ser_rooms
+    if user_signed_in?
+      @rooms = Room.where(user_id: current_user.id).order(created_at: :desc)
+    elsif company_signed_in?
+      @rooms = Room.where(company_id: current_company.id).order(created_at: :desc)
+    end
+  end
+  
 end
