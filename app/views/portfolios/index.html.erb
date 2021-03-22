@@ -5,6 +5,7 @@
     </div>
     <nav class="header-nav">
       <div class="header-btn">
+          <%= link_to "チャット", rooms_path, class:"button-pulse logout-btn" if @userRooms.present? %>
           <%= link_to "マイページ", company_path(current_company.id), class:"button-pulse mypage-btn" %>
           <%= link_to "ログアウト",  destroy_company_session_path, method: :delete, class:"button-pulse logout-btn" %>
       </div>  

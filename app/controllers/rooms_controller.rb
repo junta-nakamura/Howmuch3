@@ -1,13 +1,8 @@
 class RoomsController < ApplicationController
   before_action :authenticate_company!, only: [:create]
+  before_action :ser_rooms, only: [:index, :show]
 
   def index
-    if user_signed_in?
-      @rooms = Room.where(user_id: current_user.id)
-    elsif company_signed_in?
-      @rooms = Room.where(company_id: current_company.id)
-    end
-
     @message = Message.new
   end
 
@@ -32,4 +27,12 @@ class RoomsController < ApplicationController
     params.require(:room).permit(:user_id, :company_id)
   end
 
+  def ser_rooms
+    if user_signed_in?
+      @rooms = Room.where(user_id: current_user.id).order(created_at: :desc)
+    elsif company_signed_in?
+      @rooms = Room.where(company_id: current_company.id).order(created_at: :desc)
+    end
+  end
+  
 end

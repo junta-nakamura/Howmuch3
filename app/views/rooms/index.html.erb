@@ -24,43 +24,30 @@
 <div class="room-all-content">
   <div class="side-bar">
     <div class="room-box">
-      <div class="room">
-        <div class="room-left">
-          <div class="chat-partner-image"></div>
-        </div>
-        <div class="room-right">
-          <div class="chat-partner-name"></div>
-          <div class="chat-content"></div>
-          <div class="chat-date"></div>
-        </div>
-      </div>
+        <% @rooms.each do |room| %>
+          <%= link_to room_path(room.id), class:"room-link" do %>
+            <div class="room">
+              <div class="room-left">
+                <div class="chat-partner-image">
+                  <%= image_tag room.company.company_image.variant(resize_to_limit: [300, 300]), class:"company-image" if room.company.company_image.attached? %>
+                </div>
+              </div>
+              <div class="room-right">
+                <% if !company_signed_in? %>
+                 <div class="chat-partner-name"><%= room.company.company_name %></div>
+                <% elsif !user_signed_in? %>
+                  <div class="chat-partner-name"><%= room.user.nickname %></div>
+                <% end %>
+                <div class="chat-content"><%= room.messages.order(created_at: :desc).take.try(:content) %></div>
+                <div class="chat-date"><%= l room.messages.order(created_at: :desc).take.try(:created_at) %></div>
+              </div>
+            </div>
+          <% end %>
+        <% end %>  
     </div>
   </div>
-
-  <div class="main-content">
-    <div class="chat-content-box">
-      <div class="chat-box">
-        <div class="chat-left">
-          <div class="chat-partner-image">
-        </div>
-        <div class="chat-right">
-          <div class="chat-message-box">
-            <div class="chat-message-user"></div>
-            <div class="chat-message-content"></div>
-            <div class="chat-message-date"></div>
-          </div>
-        </div>
-      </div>
-    </div>
-    <%= form_with model: [@rooms, @message], url: rooms_path, class: 'form', local: true do |f| %>
-      <div class="form-input">
-        <%= f.text_field :content, class: 'form-message', placeholder: 'type a message' %>
-        <label class="form-image">
-          <span class="image-file">画像</span>
-          <%= f.file_field :image, class: 'hidden' %>
-        </label>
-      </div>
-      <%= f.submit '送信', class: 'form-submit' %>
-    <% end %>
+  <div class="lets-talk-box">
+      <i class="far fa-comments"></i> 
+      <div class="lets-talk">トークを始めよう！</div>
   </div>
 </div>

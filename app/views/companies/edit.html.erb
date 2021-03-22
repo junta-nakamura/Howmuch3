@@ -6,6 +6,7 @@
     <nav class="header-nav">
       <div class="header-btn">
           <%= link_to "投稿一覧", portfolios_path, class:"button-pulse index-btn" %>
+          <%= link_to "チャット", rooms_path, class:"button-pulse index-btn" if @companyRooms.present? %>
           <%= link_to "マイページ", company_path(current_company.id), class:"button-pulse logout-btn" %>
           <%= link_to "ログアウト", destroy_company_session_path, method: :delete, class:"button-pulse logout-btn" %>
       </div>
@@ -20,20 +21,9 @@
     <div class="box-inner">
       <%= form_with model: @company, local: true do |f| %>
 
-        <div class="box-email">
-          <%= f.label :メールアドレス, "email" %><br />
-          <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
-        </div>
-
-        <div class="box-password">
-          <%= f.label :パスワード %><br />
-          <%= f.password_field :password, autocomplete: "current-password" %>
-        </div>
-
-        <div class="box-password">
-          <%= f.label :確認用パスワード %><br />
-          <%= f.password_field :password, autocomplete: "current-password" %>
-        </div>
+          <div class="box-company-image">
+            <%= f.file_field :company_image, class:"company-image-edit" %>  
+          </div>
 
         <div class="box-company">
           <%= f.label :企業名 %><br />

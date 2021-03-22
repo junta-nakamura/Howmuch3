@@ -6,6 +6,7 @@
     <nav class="header-nav">
       <div class="header-btn">
           <%= link_to "新規投稿", new_portfolio_path, class:"button-pulse logout-btn" %>
+          <%= link_to "チャット", rooms_path, class:"button-pulse logout-btn" if @userRooms.present? %>
           <%= link_to "マイページ", user_path(current_user.id), class:"button-pulse mypage-btn" %>
           <%= link_to "ログアウト", destroy_user_session_path, method: :delete, class:"button-pulse logout-btn" %>
       </div>  

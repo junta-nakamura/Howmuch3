@@ -1,6 +1,7 @@
 class PortfoliosController < ApplicationController
 
   before_action :set_portfolio, only: [:show, :edit, :update, :destroy]
+  before_action :ser_rooms, only: [:index, :new, :show, :edit]
 
   def top
   end
@@ -50,6 +51,14 @@ class PortfoliosController < ApplicationController
 
   def set_portfolio
     @portfolio = Portfolio.find(params[:id])
+  end
+
+  def ser_rooms
+    if user_signed_in?
+      @userRooms = Room.where(user_id: current_user.id)
+    elsif company_signed_in?
+      @companyRooms = Room.where(company_id: current_company.id)
+    end
   end
 
 end

@@ -201,7 +201,8 @@ input, select {
   padding: 300px;
   font-size: 100px;
   color: #757575;
-  background-image: url('/assets/images/スクリーンショット 2021-02-27 18.35.04')
+  background-image: url('/test.png');
+  background-size:  cover;
 }
 
 
@@ -949,12 +950,218 @@ header {
   margin: 0 auto;
 }
 
+.company-icon {
+  border-radius: 50%;
+  width: 200px;
+  height: 200px;
+  object-fit: cover;
+}
+
+.company-icon-image {
+  text-align: center;
+  margin-top: 150px;
+}
+
 
 
 
 
 
 /* チャットルーム */
+.room-all-content {
+  display: flex;
+  width: 100vw;
+  height: 100vh;
+  padding: 20px;
+  /* border: 1px solid rgb(223, 223, 223); */
+}
+
+.side-bar {
+  width: 20vw;
+  margin-right: 30px;
+  border: 1px solid rgb(223, 223, 223);
+  box-sizing: border-box;
+}
+
+.room-box {
+  padding: 3px;
+  overflow: auto;
+}
+
+.room {
+  padding: 5px;
+  margin-bottom: 8px;
+  display: flex;
+}
+
+.room-left {
+  margin-right: 20px;
+}
+
+.room-right {
+  margin-top: 10px;
+}
+
+.chat-partner-name {
+  margin-bottom: 5px;
+  font-weight: bold;
+  font-size: 14px;
+  color: black;
+}
+
+.chat-content {
+  margin-bottom: 5px;
+  color: #757575;
+  font-size: 12px;
+}
+
+.chat-date {
+  color: #757575;
+  font-size: 10px;
+}
+
+.company-image {
+  border-radius: 50%;
+  width: 60px;
+  height: 60px;
+  object-fit: cover;
+}
+
+.room-link {
+  text-decoration: none;
+}
+
+.lets-talk-box {
+  width: 80vw;
+  display: flex;
+  flex-direction: column;
+}
+
+.fa-comments {
+  font-size: 100px;
+  margin: 250px auto 0;
+  color: #bbbbbb;
+}
+
+.lets-talk {
+  text-align: center;
+  margin-top: 10px;
+  color: #757575;
+}
+
+
+
+
+
+
+
+/* チャットルーム詳細 */
+.message-wrapper {
+  width: 80vw;
+}
+
+.messages-box {
+  height: 91%;
+  overflow: auto;
+}
+
+.message {
+  display: flex;
+}
+
+.user-view-user-message {
+  margin: 10px 40px 10px auto;
+  border: 1px solid gray;
+  padding: 10px 20px;
+  border-radius: 30px;
+}
+
+.user-view-company-message {
+  margin: 10px 40px;
+  display: flex;
+}
+
+.company-view-company-message {
+  margin: 10px 40px 10px auto;
+  border: 1px solid gray;
+  padding: 10px 20px;
+  border-radius: 30px;
+}
+
+.company-view-user-message {
+  margin: 10px 40px;
+  display: flex;
+}
+
+.message-user-name {
+  font-size: 13px;
+  margin-bottom: 8px;
+}
+
+.message-content {
+  font-size: 18px;
+  margin-bottom: 8px;
+}
+
+.message-date {
+  font-size: 13px;
+  color: #757575;;
+}
+
+.room-right-show {
+  border: 1px solid gray;
+  padding: 10px 20px;
+  border-radius: 30px;
+}
+
+.message-form-wrapper {
+  width: 100%;
+  /* border: 1px solid rgb(223, 223, 223); */
+  background-color: white;
+}
+
+.message-input {
+  width: 90%;
+  height: 50px;
+  padding: 8px;
+  margin-top: 20px;
+  border: 1px solid rgb(223, 223, 223);
+}
+
+.submit-btn {
+  background-color: white;
+}
+
+.button-4 {
+  display: inline-block;
+  padding: 0.4em 1.6em;
+  font-size: 0.8em;
+  color: #fff;
+  text-decoration: none;
+  user-select: none;
+  background: #00b5ad;
+  border: 1px #00b5ad solid;
+  border-radius: 3px;
+  box-shadow: 0 3px 3px 0 rgba(0, 0, 0, 0.14), 0 1px 2px 0 rgba(0, 0, 0, 0.12);
+  transition: 0.2s ease;
+  margin: 18px 0 0 5px;
+}
+
+.button-4:hover {
+  box-shadow: 0 3px 6px 0 rgba(0, 0, 0, 0.2), 0 1px 8px 0 rgba(0, 0, 0, 0.12);
+}
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 /* ユーザー登録 */
@@ -1016,6 +1223,8 @@ header {
 
 
 
+
+
 /* 企業編集 */
 .hover-effect_slide {
   position: relative;
@@ -1054,4 +1263,13 @@ header {
 
 .edit-done {
   text-align: center;
+}
+
+.box-company-image {
+  margin: 80px auto 10px;
+}
+
+.edit-btn-groups {
+  text-align: center;
+  margin-top: 20px;
 }

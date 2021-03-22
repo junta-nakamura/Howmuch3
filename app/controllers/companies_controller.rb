@@ -1,11 +1,9 @@
 class CompaniesController < ApplicationController
 
   before_action :set_company
+  before_action :ser_rooms, only: [:show, :edit]
 
   def show
-    if company_signed_in?
-      @companyRooms = Room.where(company_id: current_company.id)
-    end
   end
   
   def edit
@@ -25,7 +23,13 @@ class CompaniesController < ApplicationController
   end
 
   def company_params
-    params.require(:company).permit(:company_name, :company_phone, :postal_code, :prefecture_id, :municipalities, :house_number, :building)
+    params.require(:company).permit(:company_name, :company_phone, :postal_code, :prefecture_id, :municipalities, :house_number, :building, :company_image)
+  end
+
+  def ser_rooms
+    if company_signed_in?
+      @companyRooms = Room.where(company_id: current_company.id)
+    end
   end
 
 end

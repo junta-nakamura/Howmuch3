@@ -23,12 +23,45 @@
   </div>
 </header>
 
-<%= render partial: "message", collection: @messages %>
+<div class="room-all-content">
+  <div class="side-bar">
+    <div class="room-box">
+        <% @rooms.each do |room| %>
+          <%= link_to room_path(room.id), class:"room-link" do %>
+            <div class="room">
+              <div class="room-left">
+                <div class="chat-partner-image">
+                  <%= image_tag room.company.company_image.variant(resize_to_limit: [300, 300]), class:"company-image" if room.company.company_image.attached? %>
+                </div>
+              </div>
+              <div class="room-right">
+                <% if !company_signed_in? %>
+                 <div class="chat-partner-name"><%= room.company.company_name %></div>
+                <% elsif !user_signed_in? %>
+                  <div class="chat-partner-name"><%= room.user.nickname %></div>
+                <% end %>
+                <div class="chat-content"><%= room.messages.order(created_at: :desc).take.try(:content) %></div>
+                <div class="chat-date"><%= l room.messages.order(created_at: :desc).take.try(:created_at) %></div>
+              </div>
+            </div>
+          <% end %>
+        <% end %>  
+    </div>
+  </div>
 
-<% if company_signed_in? || user_signed_in? %>
-  <%= form_for @message, url: room_messages_path(@room.id) do |f| %>
-    <%= f.text_field :content, placeholder: "メッセージを入力して下さい" %>
-    <%= f.hidden_field :room_id, value: @room.id %>
-    <%= f.submit "送信" %>
-  <% end %>
-<% end %>
+  <div class="message-wrapper">
+   <div class="messages-box">
+    <%= render partial: "message", collection: @messages %>
+   </div> 
+   <div class="message-form-wrapper">
+      <% if company_signed_in? || user_signed_in? %>
+        <%= form_for @message, url: room_messages_path(@room.id) do |f| %>
+          <%= f.text_field :content, placeholder: "メッセージを入力して下さい", class:"message-input" %>
+          <%= f.hidden_field :room_id, value: @room.id %>
+          <%= f.submit "送信", class:"button-4" %>
+        <% end %>
+      <% end %>
+    </div>
+  </div>
+</div>
+

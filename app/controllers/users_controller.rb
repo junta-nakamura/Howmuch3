@@ -9,6 +9,7 @@ class UsersController < ApplicationController
       @user = User.find(params[:id])
       @myPortfolios = Portfolio.where(user_id: @user.id)
       @roomMatch = Room.where(company_id: current_company.id).where(user_id: @user.id)
+      @companyRooms = Room.where(company_id: current_company.id) 
       if @roomMatch.present?
         @haveRoom = true
         @roomId = @roomMatch.ids
@@ -22,6 +23,9 @@ class UsersController < ApplicationController
   end
 
   def edit
+    if user_signed_in?
+      @userRooms = Room.where(user_id: current_user.id)
+    end
   end
 
   def update
