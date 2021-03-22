@@ -39,7 +39,7 @@
                   <div class="chat-partner-name"><%= room.user.nickname %></div>
                 <% end %>
                 <div class="chat-content"><%= room.messages.order(created_at: :desc).take.try(:content) %></div>
-                <div class="chat-date"><%= l room.messages.order(created_at: :desc).take.try(:created_at) %></div>
+                <div class="chat-date"><%= room.messages.order(created_at: :desc).take.try(:created_at) %></div>
               </div>
             </div>
           <% end %>

@@ -52,16 +52,6 @@ ActiveRecord::Schema.define(version: 2021_03_19_003007) do
     t.index ["reset_password_token"], name: "index_companies_on_reset_password_token", unique: true
   end
 
-  create_table "company_messages", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
-    t.text "content", null: false
-    t.bigint "company_id"
-    t.bigint "room_id"
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
-    t.index ["company_id"], name: "index_company_messages_on_company_id"
-    t.index ["room_id"], name: "index_company_messages_on_room_id"
-  end
-
   create_table "messages", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.text "content", null: false
     t.bigint "user_id"
@@ -114,8 +104,6 @@ ActiveRecord::Schema.define(version: 2021_03_19_003007) do
   end
 
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
-  add_foreign_key "company_messages", "companies"
-  add_foreign_key "company_messages", "rooms"
   add_foreign_key "messages", "companies"
   add_foreign_key "messages", "rooms"
   add_foreign_key "messages", "users"
