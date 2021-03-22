@@ -26,6 +26,7 @@
 <div class="room-all-content">
   <div class="side-bar">
     <div class="room-box">
+      <% if @rooms.present? %>
         <% @rooms.each do |room| %>
           <%= link_to room_path(room.id), class:"room-link" do %>
             <div class="room">
@@ -41,11 +42,12 @@
                   <div class="chat-partner-name"><%= room.user.nickname %></div>
                 <% end %>
                 <div class="chat-content"><%= room.messages.order(created_at: :desc).take.try(:content) %></div>
-                <div class="chat-date"><%= l room.messages.order(created_at: :desc).take.try(:created_at) %></div>
+                <div class="chat-date"><%= room.messages.order(created_at: :desc).take.try(:created_at) %></div>
               </div>
             </div>
           <% end %>
-        <% end %>  
+        <% end %>
+      <% end %>  
     </div>
   </div>
 
