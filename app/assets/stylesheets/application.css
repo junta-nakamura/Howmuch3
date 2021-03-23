@@ -960,10 +960,6 @@ header {
 
 /* 企業詳細 */
 /* FontAwesomeを使用しています。*/
-.list6 {
-  margin: 0 auto;
-}
-
 .box,
 .list {
   padding: 0;
@@ -992,7 +988,7 @@ header {
 }
 
 .list6 {
-  height: 100vh;
+  height: auto;
   width: 100vw;
   display: flex;
   flex-direction: column;

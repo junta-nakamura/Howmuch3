@@ -57,14 +57,14 @@
    </div> 
    <div class="message-form-wrapper">
       <% if company_signed_in? || user_signed_in? %>
-        <%= form_for @message, url: room_messages_path(@room.id) do |f| %>
+        <%= form_for @message, url: room_messages_path(@room.id), id:"form" do |f| %>
           <%= f.text_field :content, placeholder: "メッセージを入力して下さい", class:"message-input" %>
             <label class="form-image">
               <span class="image-file"><i class="fas fa-camera"></i></span>
               <%= f.file_field :image, class: 'hidden' %>
             </label>
           <%= f.hidden_field :room_id, value: @room.id %>
-          <%= f.submit "送信", class:"button-4" %>
+          <%= f.submit "送信", class:"button-4", id:"submit-message" %>
         <% end %>
       <% end %>
     </div>
