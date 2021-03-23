@@ -1,35 +1,43 @@
-<header class="header-3">
-  <div class="header-inner">
-    <div class="logo">
-      <div class="howmuch-logo">How much</div>
+<div class="top-wrapper">
+  <header class="header-3">
+    <div class="header-inner">
+      <div class="logo">
+        <div class="howmuch-logo">How much</div>
+      </div>
+      <nav class="header-nav">
+        <% if user_signed_in? || company_signed_in? %>
+        <div class="header-btn">
+          <% if user_signed_in? %>
+            <%= link_to "マイページ",  user_path(current_user.id), class:"button-pulse mypage-btn" %>
+            <%= link_to "ログアウト", destroy_user_session_path, method: :delete, class:"button-pulse logout-btn" %>
+          <% else company_signed_in? %>
+            <%= link_to "マイページ", company_path(current_company.id), class:"button-pulse mypage-btn" %>
+            <%= link_to "ログアウト",  destroy_company_session_path, method: :delete, class:"button-pulse logout-btn" %>
+            <%= link_to "投稿一覧", portfolios_path, class:"button-pulse index-btn" %>
+          <% end %>
+        </div>  
+        <% else %>
+            <div class="header-nav-item">
+              <%= link_to "法人新規登録", new_company_registration_path, class:"button-pulse signup-btn" %>
+            </div>
+            <div class="header-nav-item">
+              <%= link_to "法人ログイン", new_company_session_path, class:"button-pulse login-btn" %>
+            </div>
+            <div class="header-nav-item">
+              <%= link_to "フリーランス新規登録", new_user_registration_path, class:"button-pulse signup-btn" %>
+            </div>
+            <div class="header-nav-item">
+              <%= link_to "フリーランスログイン", new_user_session_path, class:"button-pulse login-btn" %>
+            </div>
+        <% end %> 
+      </nav>
     </div>
-    <nav class="header-nav">
-      <% if user_signed_in? || company_signed_in? %>
-      <div class="header-btn">
-        <% if user_signed_in? %>
-          <%= link_to "マイページ",  user_path(current_user.id), class:"button-pulse mypage-btn" %>
-          <%= link_to "ログアウト", destroy_user_session_path, method: :delete, class:"button-pulse logout-btn" %>
-        <% else company_signed_in? %>
-          <%= link_to "マイページ", company_path(current_company.id), class:"button-pulse mypage-btn" %>
-          <%= link_to "ログアウト",  destroy_company_session_path, method: :delete, class:"button-pulse logout-btn" %>
-          <%= link_to "投稿一覧", portfolios_path, class:"button-pulse index-btn" %>
-        <% end %>
-      </div>  
-      <% else %>
-          <div class="header-nav-item">
-            <%= link_to "法人新規登録", new_company_registration_path, class:"button-pulse signup-btn" %>
-          </div>
-          <div class="header-nav-item">
-            <%= link_to "法人ログイン", new_company_session_path, class:"button-pulse login-btn" %>
-          </div>
-          <div class="header-nav-item">
-            <%= link_to "フリーランス新規登録", new_user_registration_path, class:"button-pulse signup-btn" %>
-          </div>
-          <div class="header-nav-item">
-            <%= link_to "フリーランスログイン", new_user_session_path, class:"button-pulse login-btn" %>
-          </div>
-      <% end %> 
-    </nav>
+  </header>
+  <div class="all-contents">
+    <div class="first-sentence">アイディアは可能性だ。</div>
+    <div class="second-sentence">人は皆、発明家だ。</div>
+    <div class="third-sentence">感性は才能だ。</div>
+    <div class="fourth-sentence">人は皆、芸術家だ。</div>
+    <div class="fifth-sentence">あなたを待っている人がいる。</div>
   </div>
-</header>
-<div class="all-contents">Let's Try!!</div>
+</div>

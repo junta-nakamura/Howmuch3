@@ -29,11 +29,6 @@
         </div>
 
         <div class="box-user">
-           <%= f.label :職種, class:"portfolio-type-box" %><br />
-           <%= f.collection_select(:type_id, Type.all, :id, :name, {prompt: "---" }, {class:"select-box", id:"item-category"}) %>
-         </div>
-
-        <div class="box-user">
           <%= f.label :姓 %><br />
           <%= f.text_field :last_name %>
         </div>
@@ -53,6 +48,10 @@
           <%= f.text_field :first_name_kana %>
         </div>
 
+        <div class="box-user">
+           <%= f.label :職種, class:"portfolio-type-box" %><br />
+           <%= f.collection_select(:type_id, Type.all, :id, :name, {prompt: "---" }, {class:"select-box", id:"item-category"}) %>
+         </div>
         <%# <div class="box-user">
           <%# <%= f.label :生年月日 %>
           <%# <br /> %>

@@ -1,20 +1,21 @@
 class MessagesController < ApplicationController
 
   def create
-    @message = Message.create(message_params)
-    if @message.id.present?
-      @message.user = current_user
-      @message.company = current_company
-      @message.save
+    @message = Message.new(message_params)
+    if @message.save
       redirect_to room_path(params[:room_id])
     else
-      render room_path(params[:room_id])
+      redirect_back(fallback_location: root_path)
     end
   end
   
   private
   def message_params
-    params.require(:message).permit(:content, :room_id)
+    if user_signed_in?
+      params.require(:message).permit(:content, :room_id).merge(user_id: current_user.id)
+    elsif company_signed_in?
+      params.require(:message).permit(:content, :room_id).merge(company_id: current_company.id)
+    end
   end
   
 end
