@@ -49,7 +49,6 @@
         </div>
 
         <div class="box-user">
-<<<<<<< Updated upstream
            <%= f.label :職種, class:"portfolio-type-box" %><br />
            <%= f.collection_select(:type_id, Type.all, :id, :name, {prompt: "---" }, {class:"select-box", id:"item-category"}) %>
          </div>
@@ -71,10 +70,6 @@
                         end_year: (Time.now.year - 5),
                         date_separator: '%s'),
                       "<p> 年 </p>", "<p> 月 </p>") + "<p> 日 </p>" %>
-=======
-          <%= f.label :生年月日 %><br />
-          <%= f.text_field :birthday %>
->>>>>>> Stashed changes
         </div>
 
         <div class="box-user">

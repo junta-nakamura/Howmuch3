@@ -12,9 +12,9 @@ class MessagesController < ApplicationController
   private
   def message_params
     if user_signed_in?
-      params.require(:message).permit(:content, :room_id).merge(user_id: current_user.id)
+      params.require(:message).permit(:content, :room_id, :message_image).merge(user_id: current_user.id)
     elsif company_signed_in?
-      params.require(:message).permit(:content, :room_id).merge(company_id: current_company.id)
+      params.require(:message).permit(:content, :room_id, :message_image).merge(company_id: current_company.id)
     end
   end
   
