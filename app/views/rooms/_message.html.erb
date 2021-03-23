@@ -1,3 +1,4 @@
+<<<<<<< Updated upstream
 <div class="message">
   <% if user_signed_in? %>
     <% if message.user.present? %>
@@ -41,3 +42,48 @@
     <% end %>
   <% end %>
 </div>
+=======
+      <div class="message">
+        <% if user_signed_in? %>
+          <% if message.user.present? %>
+            <div class="user-view-user-message">
+              <div class="message-content"><%= message.content %></div>
+              <div class="message-date"><%= l message.created_at %></div>
+            </div>
+          <% elsif message.company.present? %>
+            <div class="user-view-company-message">
+              <div class="room-left">
+                <div class="chat-partner-image">
+                  <%= link_to image_tag(message.company.company_image.variant(resize_to_limit: [300, 300]), class:"company-image"), company_path(@room.company_id) %>
+                </div>
+              </div>
+              <div class="room-right-show">
+                <div class="message-user-name"><%= message.company.company_name %></div>
+                <div class="message-content"><%= message.content %></div>
+                <div class="message-date"><%= l message.created_at %></div>
+              </div>
+            </div>
+          <% end %>
+        <% elsif company_signed_in? %>
+          <% if message.company.present? %>
+            <div class="company-view-company-message">
+              <div class="message-content"><%= message.content %></div>
+              <div class="message-date"><%= l message.created_at %></div>
+            </div>
+          <% elsif message.user.present? %>
+            <div class="company-view-user-message">
+              <div class="room-left">
+                <div class="chat-partner-image">
+                  <%= image_tag message.user.user_image.variant(resize_to_limit: [300, 300]), class:"company-image" if message.user.user_image.attached? %>
+                </div>
+              </div>
+              <div class="room-right-show">  
+                <div class="message-user-name"><%= message.user.nickname %></div>
+                <div class="message-content"><%= message.content %></div>
+                <div class="message-date"><%= l message.created_at %></div>
+              </div>  
+            </div>
+          <% end %>
+        <% end %>
+    </div>
+>>>>>>> Stashed changes
