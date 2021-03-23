@@ -49,6 +49,7 @@
         </div>
 
         <div class="box-user">
+<<<<<<< Updated upstream
            <%= f.label :職種, class:"portfolio-type-box" %><br />
            <%= f.collection_select(:type_id, Type.all, :id, :name, {prompt: "---" }, {class:"select-box", id:"item-category"}) %>
          </div>
@@ -70,11 +71,15 @@
                         end_year: (Time.now.year - 5),
                         date_separator: '%s'),
                       "<p> 年 </p>", "<p> 月 </p>") + "<p> 日 </p>" %>
+=======
+          <%= f.label :生年月日 %><br />
+          <%= f.text_field :birthday %>
+>>>>>>> Stashed changes
         </div>
 
         <div class="box-user">
           <%= f.label :自己紹介 %><br />
-          <%= f.text_area :introduction, class:"introduce-box" %>
+          <%= f.text_area :introduction, class:"introduce-box", placeholder: "経歴・スキル・資格・実績など、具体的な実績を記載しましょう。企業からのスカウトの確率を高めることに繋がります。" %>
         </div>
 
 
