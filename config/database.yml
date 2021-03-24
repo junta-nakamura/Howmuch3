@@ -53,3 +53,4 @@ production:
   database: Howmuch3_production
   username: Howmuch3
   password: <%= ENV['HOWMUCH3_DATABASE_PASSWORD'] %>
+
