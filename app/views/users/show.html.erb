@@ -72,10 +72,19 @@
   <% @myPortfolios.each do |portfolio| %>
   <div class="card-value">
     <div class="image-wrapper">
+        <% if portfolio.price != 0 %>
+          <div class="portfolio-price">
+            ¥<%= portfolio.price %>
+          </div>
+        <% else %>
+          <div class="portfolio-price not-sale">
+          ※売却不可
+          </div>
+        <% end %>  
       <div class="card-image">
         <%= image_tag portfolio.images[0].variant(resize_to_limit: [300, 300]), class:"portfolio-image" %>
        </div>
-    </div>  
+    </div>
 
     <div class="content-wrapper">
       <div class="card-title">
@@ -84,9 +93,10 @@
       <div class="card-detail">
         <%= portfolio.detail %>
       </div>
-      <div class="next-to-btn">
-        <%= link_to "詳細を表示する", portfolio_path(portfolio), class:"content-3" %>
-      </div>
+      <%= link_to portfolio_path(portfolio), class:"button-20" do %>
+       <span class="text">詳細</span>
+       <span class="arrow"></span>
+      <% end %>
     </div>
   </div>
   <% end %>

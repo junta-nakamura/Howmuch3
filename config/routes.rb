@@ -14,8 +14,10 @@ Rails.application.routes.draw do
     resources :portfolios
     resources :companies, only: [:show, :edit, :update]
     resources :users, only: [:show, :edit, :update]
-    
     resources :rooms, only: [:create,:show, :index] do
       resources :messages, only: [:create]
     end
+
+    get "/search", to: "searches#index"
+
 end

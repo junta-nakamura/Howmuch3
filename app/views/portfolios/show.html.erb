@@ -42,6 +42,26 @@
           <p><%= @portfolio.detail %></p>
         </blockquote>
       </div>
+      <div class="user-show-pricebox">
+        <% if @portfolio.price != 0 %>
+         <div class="user-show-price">
+          ¥<%= @portfolio.price %>
+         </div>
+        <% else %>
+         <div class="user-show-price">
+         ※売却不可
+         </div>
+        <% end %>
+      </div>
+
+      
+      <div class="development-language-area">
+        <%= @portfolio.development_language.name %>
+      </div>
+      <div class="business-type-area">
+        <%= @portfolio.business_type.name %>
+      </div>
+
     <% if @portfolio.user == current_user %>
     <div class="btn-groups">
       <%= link_to "編集", edit_portfolio_path(@portfolio), class:"edit-btn button-fill" %>

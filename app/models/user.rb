@@ -25,6 +25,14 @@ class User < ApplicationRecord
     validates :last_name_kana
   end
 
+  def self.search(word)
+    if word != ""
+      User.where("introduction LIKE(?)", "%#{word}%")
+    else
+      User.all
+    end
+  end
+
   # PASSWORD_REGEX = /\A(?=.*?[a-z])(?=.*?[\d])[a-z\d]+\z/i.freeze
   # validates_format_of :password, with: PASSWORD_REGEX
 

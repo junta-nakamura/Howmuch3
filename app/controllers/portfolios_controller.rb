@@ -8,6 +8,7 @@ class PortfoliosController < ApplicationController
 
   def index
     @portfolios = Portfolio.all.order(id: "DESC")
+    @companyRooms = Room.where(company_id: current_company.id)
   end
 
   def show
@@ -19,6 +20,10 @@ class PortfoliosController < ApplicationController
 
   def create
     @portfolio = Portfolio.new(portfolio_params)
+    if @portfolio.price.blank?
+      @portfolio.price = 0
+    end
+    
     if @portfolio.save
       redirect_to user_path(current_user.id)
     else
@@ -46,7 +51,7 @@ class PortfoliosController < ApplicationController
   
   private
   def portfolio_params
-    params.require(:portfolio).permit(:portfolio_name, :detail, :type_id, images: []).merge(user_id: current_user.id)
+    params.require(:portfolio).permit(:portfolio_name, :detail, :type_id, :development_language, :business_type, :sale_type, :price, images: []).merge(user_id: current_user.id)
   end
 
   def set_portfolio

@@ -356,6 +356,12 @@ input, select {
 
 
 
+
+
+
+
+
+
 /* 企業ログイン */
 .box-wrapper {
   margin-top: 170px;
@@ -549,7 +555,7 @@ h1 {
 }
 
 .action-field {
-  margin: 30px 0 60px;
+  margin: 50px 0 60px;
   padding: 8px;
   border: 1px solid #00b5ad;
   color: #00b5ad;
@@ -574,6 +580,40 @@ h1 {
   color: #fff;
   box-shadow: inset #00b5ad 0 0 0 2em;
 }
+
+.price-field {
+  margin-top: 10px;
+  width: 150px;
+  position: absolute;
+  top: 15px;
+}
+
+.price-box {
+  display: flex;
+  position: relative;
+  margin-top: 20px;
+}
+
+.yen {
+  margin-top: 15px;
+  position: absolute;
+  left: 160px;
+  top: 15px;
+}
+.business-type-box {
+  width: 150px;
+}
+
+.business-type {
+  width: 80px;
+}
+
+.radio-box {
+  margin-top: 10px;
+}
+
+
+
 
 
 
@@ -603,7 +643,7 @@ h1 {
 
 .card-user {
   text-align: center;
-  margin: 20px auto;
+  margin: 20px auto 40px;
   font-size: 20px;
   width: 300px;
   white-space: nowrap;
@@ -615,7 +655,7 @@ h1 {
   font-weight: bold;
   font-size: 25px;
   text-align: center;
-  margin-bottom: 50px;
+  margin-bottom: 30px;
 }
 
 .content-show-box {
@@ -686,27 +726,35 @@ h1 {
   justify-content: center;
 }
 
+.user-show-pricebox {
+  display: flex;
+  justify-content: center;
+}
+
+.user-show-price {
+  background-color: rgb(100, 100, 100, 5);
+  color: white;
+  padding: 5px;
+  font-size: 20px;
+  text-align: center;
+  display: inline-block;
+  margin: 30px auto 0;
+}
+
+
+
+
+
+
+
+
+
+
+
 
 
 /* ポートフォリオ編集 */
-.edit-main-content {
-  width: 100vw;
-  display: flex;
-  justify-content: center;
-  margin-top: 80px;
-}
-
-.edit-finish {
-  margin: 10px 0 60px;
-  padding: 8px;
-  border: 1px solid #00b5ad;
-  color: #00b5ad;
-  background-color: white;
-  font-size: 13px;
-}
-
-.button-fill {
-  position: relative;
+.hover-effect_slide-edit {
   display: inline-block;
   padding: 0.4em 1.6em;
   font-size: 0.8em;
@@ -714,8 +762,28 @@ h1 {
   text-decoration: none;
   user-select: none;
   border: 1px #00b5ad solid;
-  box-shadow: inset #00b5ad 0 0 0 0;
-  transition: 0.3s;
+  transition: 0.2s ease;
+  background-color: white ;
+  margin: 70px auto;
+}
+
+.hover-effect_slide-edit::before {
+  z-index: -1;
+  width: 0;
+  height: 100%;
+  content: "";
+  background-color: #00b5ad;
+  transition: 0.2s ease;
+}
+
+.hover-effect_slide-edit:hover {
+  color: #fff;
+  background-color: #00b5ad;
+}
+
+.hover-effect_slide-edit:hover::before {
+  width: 100%;
+  background: #00b5ad;
 }
 
 
@@ -840,12 +908,15 @@ header {
 .card-value {
   height: 400px;
   width: 300px;
-  margin: 0 60px 50px;
+  margin: 10px 60px 150px;
   position: relative;
 }
 
 .image-wrapper {
-  margin-top: 100px;
+  height: 300px;
+  width: 200px;
+  margin: 50px;
+  position: relative;
 }
 
 .content-wrapper {
@@ -891,6 +962,7 @@ header {
 .card-image {
   display: flex;
   justify-content: center;
+  width: 100%;
 }
 
 .user-icon-round {
@@ -901,7 +973,7 @@ header {
 }
 
 .next-to-btn {
-  margin-top: 50px;
+  margin-top: 20px;
 }
 
 .dm-btn-form {
@@ -941,11 +1013,117 @@ header {
   margin: 0;
 }
 
+.portfolio-price {
+  margin-top: 30px;
+  font-size: 20px;
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  background-color: rgb(100, 100, 100, 5);
+  color: white;
+  padding: 5px;
+}
+
+.not-sale {
+  font-size: 15px;
+}
+
+.button-20 {
+  box-sizing: border-box;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 6em;
+  padding: 0.4em 0;
+  text-decoration: none;
+  border: 1px solid #00b5ad;
+  margin: 20px auto;
+}
+
+.text {
+  display: inline-block;
+  margin-right: 1em;
+  font-size: 0.7em;
+  color: #00b5ad;
+  text-decoration: none;
+}
+
+.arrow {
+  position: relative;
+  display: inline-block;
+  width: 20px;
+  height: 1px;
+  background: #00b5ad;
+  border: #00b5ad;
+}
+
+.arrow::before {
+  position: absolute;
+  top: -2px;
+  right: -5px;
+  display: block;
+  width: 0;
+  height: 0;
+  content: '';
+  border-right: 7px solid transparent;
+  border-bottom: 3px solid #00b5ad;
+}
+
+.card-value-show {
+  height: 400px;
+  width: 300px;
+  margin: 80px 60px 150px;
+  position: relative;
+}
+
+.fa-bars {
+  position: absolute;
+  top: 31px;
+  left: 230px;
+  font-size: 30px;
+}
 
 
 
 
 
+
+
+
+
+
+/* 検索 */
+.search-form-wrapper {
+  display: none;
+  padding: 50px 0 0 230px;
+}
+
+.search-field {
+  margin-bottom: 5px;
+}
+
+.development-language {
+  margin-top: 10px;
+}
+
+.search-price-field {
+  margin-bottom: 10px;
+  height: 25px;
+}
+
+.search-form {
+  margin-top: 10px;
+  width: 400px;
+  height: 30px;
+}
+
+.search-btn {
+  margin: 20px 0 0 10px;
+}
+
+.search-select-box {
+  margin-top: 10px;
+}
 /* ユーザー編集 */
 
 
@@ -1019,6 +1197,17 @@ header {
   text-align: center;
   margin-top: 150px;
 }
+
+
+
+
+
+
+
+
+
+
+
 
 
 
