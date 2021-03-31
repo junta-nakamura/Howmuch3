@@ -522,11 +522,18 @@ h1 {
 
 
 /* 新規投稿 */
-.new-portfolio-form {
+.form-wrapper-box {
   width: 100vw;
+}
+.new-portfolio-form {
+  margin: 80px auto 0;
   display: flex;
   justify-content: center;
-  margin-top: 80px;
+}
+
+.portfolio-box {
+  margin: 0 auto;
+  width: 800px;
 }
 
 .item-image {
@@ -626,7 +633,7 @@ h1 {
 }
 
 .portfolio-show {
-  width: 800px;
+  width: 100%;
   margin-top: 50px;
   display: flex;
   flex-direction: column;
@@ -643,29 +650,30 @@ h1 {
 
 .card-user {
   text-align: center;
-  margin: 20px auto 40px;
-  font-size: 20px;
+  margin: 30px auto 10px;
+  font-size: 16px;
   width: 300px;
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
+  color: black;
 }
 
 .title-show-box {
   font-weight: bold;
-  font-size: 25px;
+  font-size: 23px;
   text-align: center;
-  margin-bottom: 30px;
+  margin: 30px 0;
 }
 
 .content-show-box {
   margin: 50px auto 0;
-  width: 800px;
   height: auto;
 }
 
 .portfolio-detail-box {
   height: auto;
+  width: 90vw;
 }
 
 .btn-groups {
@@ -718,7 +726,6 @@ h1 {
 
 .detail-show-box {
   white-space: pre-wrap;
-  width: 800px;
 }
 
 .user-detail-open {
@@ -741,10 +748,24 @@ h1 {
   margin: 30px auto 0;
 }
 
+.development-language-area {
+  margin: 30px 0;
+  text-align: center;
+}
 
+.business-type-area {
+  text-align: center;
+}
 
+.btn-groups-edit {
+  text-align: center;
+  margin: 60px auto;
+}
 
-
+.bg-secondary {
+  margin: 40px 0 0;
+  font-size: 17px;
+}
 
 
 
@@ -827,6 +848,55 @@ h1 {
   color: #777;
 }
 
+.news-list {
+  display: flex;
+  align-items: center;
+  justify-content: center;/* 親要素に対して中央寄せ */
+}
+
+.arrow-index {
+  position: relative;
+  width: 18px;
+  height: 18px;
+  content: "";
+  background: #00b5ad;
+  border-radius: 50%;
+  transform: translateY(1px);
+}
+
+.arrow-index::before {
+  position: absolute;
+  top: 50%;
+  left: 45%;
+  width: 5px;
+  height: 5px;
+  content: "";
+  border-right: 1px solid #fff;
+  border-bottom: 1px solid #fff;
+  -webkit-transform: translate(-50%, -50%) rotate(-45deg);
+  transform: translate(-50%, -50%) rotate(-45deg);
+}
+
+.notice {
+  margin-left: 0.5em;
+  line-height: 1.2em;
+  color: #323232;
+  text-decoration: none;
+  transform: translate(0, 0.1em);
+}
+
+.notice:hover {
+  text-decoration: underline;
+}
+
+
+
+
+
+
+
+
+
 
 
 
@@ -863,11 +933,11 @@ header {
   text-align: center;
   width: auto;
   max-width: 370px;
-  font-size: 22px;
+  font-size: 18px;
   text-align: center;
-  white-space: nowrap;
+  /* white-space: nowrap;
   overflow: hidden;
-  text-overflow: ellipsis;
+  text-overflow: ellipsis; */
 }
 
 .user-type {
@@ -921,7 +991,6 @@ header {
 
 .content-wrapper {
   text-align: center;
-  margin-top: 50px;
   position: absolute;
   top: 350px;
 }
@@ -948,15 +1017,17 @@ header {
 }
 
 .card-title {
-  margin-top: 40px;
+  margin-top: 25px;
+  color: black;
 }
 
 .card-detail {
   width: 300px;
-  margin-top: 35px;
+  margin-top: 25px;
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
+  color: black;
 }
 
 .card-image {
@@ -1040,34 +1111,48 @@ header {
   margin: 20px auto;
 }
 
-.text {
-  display: inline-block;
-  margin-right: 1em;
-  font-size: 0.7em;
-  color: #00b5ad;
-  text-decoration: none;
+.news-list {
+  display: flex;
+  align-items: center;
+  justify-content: center;/* 親要素に対して中央寄せ */
+  margin-top: 30px;
 }
 
-.arrow {
+.arrow1 {
   position: relative;
-  display: inline-block;
-  width: 20px;
-  height: 1px;
+  width: 18px;
+  height: 18px;
+  content: "";
   background: #00b5ad;
-  border: #00b5ad;
+  border-radius: 50%;
+  transform: translateY(1px);
 }
 
-.arrow::before {
+.arrow1::before {
   position: absolute;
-  top: -2px;
-  right: -5px;
-  display: block;
-  width: 0;
-  height: 0;
-  content: '';
-  border-right: 7px solid transparent;
-  border-bottom: 3px solid #00b5ad;
+  top: 50%;
+  left: 45%;
+  width: 5px;
+  height: 5px;
+  content: "";
+  border-right: 1px solid #fff;
+  border-bottom: 1px solid #fff;
+  -webkit-transform: translate(-50%, -50%) rotate(-45deg);
+  transform: translate(-50%, -50%) rotate(-45deg);
 }
+
+.notice {
+  margin-left: 0.5em;
+  line-height: 1.2em;
+  color: #323232;
+  text-decoration: none;
+  transform: translate(0, 0.1em);
+}
+
+.notice:hover {
+  text-decoration: underline;
+}
+
 
 .card-value-show {
   height: 400px;
@@ -1124,6 +1209,72 @@ header {
 .search-select-box {
   margin-top: 10px;
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* 検索一覧 */
+.user-wrapper {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+  padding: 0 50px 200px;
+}
+
+.search-user-icon {
+  border-radius: 50%;
+  width: 230px;
+  height: 230px;
+  object-fit: cover;
+}
+
+.search-user {
+  text-align: center;
+  margin: 80px 60px 70px;
+}
+
+.user-show-link {
+  text-decoration: none;
+}
+
+.bottom-search-box {
+  text-align: center;
+  margin-top: 20px;
+  color: black;
+}
+
+.search-user-name {
+  font-size: 16px;
+  font-weight: bold;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;width: 330px;
+}
+
+.search-user-introduction {
+  font-size: 13px;
+  margin-top: 20px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  width: 330px;
+}
+
+
+
+
+
 /* ユーザー編集 */
 
 
@@ -1252,8 +1403,12 @@ header {
 .chat-partner-name {
   margin-bottom: 5px;
   font-weight: bold;
-  font-size: 14px;
+  font-size: 12px;
   color: black;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  width: 210px;
 }
 
 .chat-content {
@@ -1302,6 +1457,8 @@ header {
 
 
 
+
+
 /* チャットルーム詳細 */
 .message-wrapper {
   width: 80vw;
@@ -1310,6 +1467,7 @@ header {
 .messages-box {
   height: 91%;
   overflow: auto;
+  border: 1px solid #eee;
 }
 
 .message {
@@ -1410,8 +1568,26 @@ header {
   top: 912px;
 }
 
+.room-header {
+  margin-bottom: 30px;
+  padding: 1px 4px;
+  font-family: monospace;
+  font-size: 16px;
+  background: #eee;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
 
+.chatroom-partner {
+  text-decoration: none;
+  color: black;
+}
 
+.chatroom-partner, a:hover {
+  color: black;
+}
 
 
 

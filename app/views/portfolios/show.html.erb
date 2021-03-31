@@ -31,6 +31,7 @@
     <div class="content-show-box">
     <% unless user_signed_in? %>
       <div class="card-user">
+        <i class="fas fa-user-alt"></i>
         <%= @portfolio.user.nickname %>
       </div>  
     <% end %>  
@@ -42,28 +43,29 @@
           <p><%= @portfolio.detail %></p>
         </blockquote>
       </div>
-      <div class="user-show-pricebox">
-        <% if @portfolio.price != 0 %>
-         <div class="user-show-price">
-          ¥<%= @portfolio.price %>
-         </div>
-        <% else %>
-         <div class="user-show-price">
-         ※売却不可
-         </div>
-        <% end %>
-      </div>
 
       
       <div class="development-language-area">
+        <i class="fas fa-globe"></i>
         <%= @portfolio.development_language.name %>
       </div>
       <div class="business-type-area">
+        <i class="fas fa-project-diagram"></i>
         <%= @portfolio.business_type.name %>
       </div>
 
+      <div class="user-show-pricebox">
+        <% if @portfolio.price != 0 %>
+         <span class="badge bg-secondary">
+          ¥<%= @portfolio.price %>
+         </span>
+        <% else %>
+          <span class="badge bg-secondary">※売却不可</span>
+        <% end %>
+      </div>
+
     <% if @portfolio.user == current_user %>
-    <div class="btn-groups">
+    <div class="btn-groups-edit">
       <%= link_to "編集", edit_portfolio_path(@portfolio), class:"edit-btn button-fill" %>
       <%= link_to "削除", portfolio_path(@portfolio), method: :delete,  class:"delete-btn" %>
     </div> 

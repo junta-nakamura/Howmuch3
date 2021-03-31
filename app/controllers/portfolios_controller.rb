@@ -2,6 +2,7 @@ class PortfoliosController < ApplicationController
 
   before_action :set_portfolio, only: [:show, :edit, :update, :destroy]
   before_action :ser_rooms, only: [:index, :new, :show, :edit]
+  before_action :authenticate_user!, only: [:edit, :update, :destroy]
 
   def top
   end
@@ -32,8 +33,6 @@ class PortfoliosController < ApplicationController
   end
 
   def edit
-    @portfolios = Portfolio.all
-    @myPortfolios = @portfolios.where(user_id: current_user.id)
   end
 
   def update
@@ -51,7 +50,7 @@ class PortfoliosController < ApplicationController
   
   private
   def portfolio_params
-    params.require(:portfolio).permit(:portfolio_name, :detail, :type_id, :development_language, :business_type, :sale_type, :price, images: []).merge(user_id: current_user.id)
+    params.require(:portfolio).permit(:portfolio_name, :detail, :type_id, :development_language_id, :business_type_id, :sale_type_id, :price, images: []).merge(user_id: current_user.id)
   end
 
   def set_portfolio

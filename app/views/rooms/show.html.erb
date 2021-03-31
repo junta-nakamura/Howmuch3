@@ -15,7 +15,6 @@
         <%= link_to "投稿一覧", portfolios_path, class:"button-pulse index-btn" %>
         <%= link_to "マイページ", company_path(current_company.id), class:"button-pulse mypage-btn" %>
         <%= link_to "ログアウト",  destroy_company_session_path, method: :delete, class:"button-pulse logout-btn" %>
-        <%# 戻るボタンも必要 %>
       </div>
      <% end %>
       </div>  
@@ -32,13 +31,14 @@
             <div class="room">
               <div class="room-left">
                 <div class="chat-partner-image">
-                  <%= image_tag room.company.company_image.variant(resize_to_limit: [300, 300]), class:"company-image" if room.company.company_image.attached? %>
+                  <%= image_tag room.company.company_image.variant(resize_to_limit: [300, 300]), class:"company-image" if user_signed_in? %>
+                  <%= image_tag room.user.user_image.variant(resize_to_limit: [300, 300]), class:"company-image" if company_signed_in? %>
                 </div>
               </div>
               <div class="room-right">
-                <% if !company_signed_in? %>
+                <% if user_signed_in? %>
                  <div class="chat-partner-name"><%= room.company.company_name %></div>
-                <% elsif !user_signed_in? %>
+                <% elsif company_signed_in? %>
                   <div class="chat-partner-name"><%= room.user.nickname %></div>
                 <% end %>
                 <div class="chat-content"><%= room.messages.order(created_at: :desc).take.try(:content) %></div>
@@ -53,6 +53,10 @@
 
   <div class="message-wrapper">
    <div class="messages-box">
+    <div class="room-header">
+      <%= link_to @room.user.nickname, user_path(@room.user_id), class:"chatroom-partner" if company_signed_in? %>
+      <%= link_to @room.company.company_name, company_path(@room.company_id), class:"chatroom-partner" if user_signed_in? %>
+    </div>  
     <%= render partial: "message", collection: @messages %>
    </div> 
    <div class="message-form-wrapper">

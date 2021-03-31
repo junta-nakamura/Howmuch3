@@ -3,9 +3,9 @@ class SearchesController < ApplicationController
   def index
     range = params[:range]
     word = params[:word]
-    development_language = params[:development_language]
-    business_type = params[:business_type]
-    sale_type= params[:sale_type]
+    development_language_id = params[:development_language_id]
+    business_type_id = params[:business_type_id]
+    sale_type_id = params[:sale_type_id]
     price = params[:price]
 
     @companyRooms = Room.where(company_id: current_company.id)
@@ -14,7 +14,7 @@ class SearchesController < ApplicationController
     if range == "1"
       @user = User.search(word)
     elsif range == "2"
-      @portfolio = Portfolio.search(word,development_language,business_type,sale_type,price).order(id: "DESC")
+      @portfolio = Portfolio.search(word,development_language_id,business_type_id,sale_type_id,price).order(id: "DESC")
     else
       render "portfolios/index"
     end

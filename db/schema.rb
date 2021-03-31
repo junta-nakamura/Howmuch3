@@ -71,10 +71,10 @@ ActiveRecord::Schema.define(version: 2021_03_25_075039) do
     t.bigint "user_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.integer "development_language", null: false
+    t.integer "development_language_id", null: false
     t.integer "price"
-    t.integer "business_type", null: false
-    t.integer "sale_type", null: false
+    t.integer "business_type_id", null: false
+    t.integer "sale_type_id", null: false
     t.index ["user_id"], name: "index_portfolios_on_user_id"
   end
 

@@ -22,17 +22,17 @@
 
     <div class="search-field development-language" id="item-category0">
       <%= f.label :開発言語, class:"decelopment-language-box" %><br />
-      <%= f.collection_select(:development_language, DevelopmentLanguage.all, :id, :name, {prompt: "---" }, {class:"select-box"}) %>
+      <%= f.collection_select(:development_language_id, DevelopmentLanguage.all, :id, :name, {prompt: "---" }, {class:"select-box"}) %>
     </div>
 
     <div class="search-field" id="item-category1">
       <%= f.label :ビジネスモデル, class:"business-type-box" %><br />
-      <%= f.collection_select(:business_type, BusinessType.all, :id, :name, {prompt: "---" }, {class:"select-box"}) %>
+      <%= f.collection_select(:business_type_id, BusinessType.all, :id, :name, {prompt: "---" }, {class:"select-box"}) %>
     </div>
 
     <div class="search-field" id="item-category2">
-      <label class="search-radio-btn"><%= f.radio_button :sale_type, 0, onClick:"saleType0(this.checked);" %>販売する</label>
-      <label class="search-radio-btn"><%= f.radio_button :sale_type, 1, onClick:"saleType1(this.checked);" %>販売しない</label>
+      <label class="search-radio-btn"><%= f.radio_button :sale_type_id, 0, onClick:"saleType0(this.checked);" %>販売する</label>
+      <label class="search-radio-btn"><%= f.radio_button :sale_type_id, 1, onClick:"saleType1(this.checked);" %>販売しない</label>
     </div>
 
     <div class="search-field" id="item-category3">
@@ -50,57 +50,61 @@
 
 <% if @user.present? %>
   <div class="user-wrapper">
-    <div class="search-user-all">
-       <% @user.each do |user| %>
-          <%= link_to user_path(user.id) do %>
-            <div class="search-user">
-              <div class="top-search-box">
-                <div class="search-user-image"><%= image_tag user.user_image.variant(resize_to_limit: [250, 250]) %></div>
-              </div>
-              <div class="bottom-search-box">
-                <div class="search-user-name"><%= user.nickname %></div>
-                <div class="search-user-introduction"><%= user.introduction %></div>
-              </div>
-            </div>
-          <% end %>  
-        <% end %>
-    </div>
+    <% @user.each do |user| %>
+       <%= link_to user_path(user.id), class:"user-show-link" do %>
+         <div class="search-user">
+           <div class="top-search-box">
+             <div class="search-user-image"><%= image_tag user.user_image.variant(resize_to_limit: [250, 250]), class:"search-user-icon" %></div>
+           </div>
+           <div class="bottom-search-box">
+             <div class="search-user-name"><%= user.nickname %></div>
+             <div class="search-user-introduction"><%= user.introduction %></div>
+           </div>
+           <div class="news-list">
+             <span class="arrow1"></span>
+             <div class="notice">詳細</div>
+           </div>
+         </div>
+       <% end %>
+     <% end %>
   </div>
 <% elsif @portfolio.present? %>
 <div class="card-wrapper">
   <% @portfolio.each do |portfolio| %>
-    <div class="card-value-show">
-      <div class="image-wrapper">
-        <% if portfolio.price.present? %>
-          <div class="portfolio-price">
-            ¥<%= portfolio.price %>
+    <%= link_to portfolio_path(portfolio), class:"user-show-link" do %>
+      <div class="card-value-show">
+        <div class="image-wrapper">
+          <% if portfolio.price != 0 %>
+            <div class="portfolio-price">
+              ¥<%= portfolio.price %>
+            </div>
+          <% else %>
+            <div class="portfolio-price not-sale">
+            ※売却不可
+            </div>
+          <% end %>  
+          <div class="card-image">
+            <%= image_tag portfolio.images[0].variant(resize_to_limit: [300, 300]), class:"portfolio-image" %>
           </div>
-        <% else %>
-          <div class="portfolio-price not-sale">
-          ※売却不可
+        </div>
+
+        <div class="content-wrapper">
+          <div class="card-user">
+            <%= portfolio.user.nickname %>
           </div>
-        <% end %>  
-      <div class="card-image">
-        <%= image_tag portfolio.images[0].variant(resize_to_limit: [300, 300]), class:"portfolio-image" %>
-       </div>
-    </div>
-  
-      <div class="content-wrapper">
-        <div class="card-user">
-          <%= portfolio.user.nickname %>
+          <div class="card-title">
+            <div class="content-1"><%= portfolio.portfolio_name %></div>
+          </div>
+          <div class="card-detail">
+            <%= portfolio.detail %>
+          </div>
+          <div class="news-list">
+            <span class="arrow1"></span>
+            <div class="notice">詳細</div>
+          </div>
         </div>
-        <div class="card-title">
-          <div class="content-1"><%= portfolio.portfolio_name %></div>
-        </div>
-        <div class="card-detail">
-          <%= portfolio.detail %>
-        </div>
-        <%= link_to portfolio_path(portfolio), class:"button-20" do %>
-         <span class="text">詳細</span>
-         <span class="arrow"></span>
-        <% end %>
       </div>
-    </div>
+    <% end %>
   <% end %>
 </div>
 <% end %>
