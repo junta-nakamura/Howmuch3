@@ -19,8 +19,8 @@ class Portfolio < ApplicationRecord
     
   validates :price, presence: true, if: :sale_type?
   
-  PRICE_REGEX = /\A\d{7}\z/
-  validates_format_of :price, with: PRICE_REGEX
+  # PRICE_REGEX = /\A\d{7}\z/
+  # validates_format_of :price, with: PRICE_REGEX
 
   def sale_type?
     self.sale_type_id == 0

@@ -24,9 +24,7 @@ class CompaniesController < ApplicationController
 
   private
   def set_company
-    # if company_signed_in?
-      @company = Company.find(params[:id])
-    # end
+    @company = Company.find(params[:id])
   end
 
   def company_params

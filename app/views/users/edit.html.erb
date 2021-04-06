@@ -59,11 +59,6 @@
            <%= f.label :職種, class:"portfolio-type-box" %><br />
            <%= f.collection_select(:type_id, Type.all, :id, :name, {prompt: "---" }, {class:"select-box", id:"item-category"}) %>
          </div>
-        <%# <div class="box-user">
-          <%# <%= f.label :生年月日 %>
-          <%# <br /> %>
-          <%# <%= f.text_field :birthday %>
-        <%# </div> %>
 
         <div class='input-birth-wrap'>
           <%= raw sprintf(
