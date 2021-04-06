@@ -48,8 +48,29 @@
   <% end %>
 </div>
 
+<% if @user.present? %>
+  <div class="user-wrapper">
+    <% @user.each do |user| %>
+       <%= link_to user_path(user.id), class:"user-show-link" do %>
+         <div class="search-user">
+           <div class="top-search-box">
+             <div class="search-user-image"><%= image_tag user.user_image.variant(resize_to_limit: [250, 250]), class:"search-user-icon" %></div>
+           </div>
+           <div class="bottom-search-box">
+             <div class="search-user-name"><%= user.nickname %></div>
+             <div class="search-user-introduction"><%= user.introduction %></div>
+           </div>
+           <div class="news-list">
+             <span class="arrow1"></span>
+             <div class="notice">詳細</div>
+           </div>
+         </div>
+       <% end %>
+     <% end %>
+  </div>
+<% elsif @portfolio.present? %>
 <div class="card-wrapper">
-  <% @portfolios.each do |portfolio| %>
+  <% @portfolio.each do |portfolio| %>
     <%= link_to portfolio_path(portfolio), class:"user-show-link" do %>
       <div class="card-value-show">
         <div class="image-wrapper">
@@ -66,10 +87,9 @@
             <%= image_tag portfolio.images[0].variant(resize_to_limit: [300, 300]), class:"portfolio-image" %>
           </div>
         </div>
-  
+
         <div class="content-wrapper">
           <div class="card-user">
-            <i class="fas fa-user-alt"></i>
             <%= portfolio.user.nickname %>
           </div>
           <div class="card-title">
@@ -87,6 +107,7 @@
     <% end %>
   <% end %>
 </div>
+<% end %>
 
 <script>
 function saleType0(ischecked){

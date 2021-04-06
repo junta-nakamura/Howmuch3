@@ -29,13 +29,14 @@
             <div class="room">
               <div class="room-left">
                 <div class="chat-partner-image">
-                  <%= image_tag room.company.company_image.variant(resize_to_limit: [300, 300]), class:"company-image" if room.company.company_image.attached? %>
+                  <%= image_tag room.company.company_image.variant(resize_to_limit: [300, 300]), class:"company-image" if user_signed_in? %>
+                  <%= image_tag room.user.user_image.variant(resize_to_limit: [300, 300]), class:"company-image" if company_signed_in? %>
                 </div>
               </div>
               <div class="room-right">
-                <% if !company_signed_in? %>
+                <% if user_signed_in? %>
                  <div class="chat-partner-name"><%= room.company.company_name %></div>
-                <% elsif !user_signed_in? %>
+                <% elsif company_signed_in? %>
                   <div class="chat-partner-name"><%= room.user.nickname %></div>
                 <% end %>
                 <div class="chat-content"><%= room.messages.order(created_at: :desc).take.try(:content) %></div>

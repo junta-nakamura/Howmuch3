@@ -44,12 +44,15 @@
 
 ## portfoliosテーブル
 
-| Column         | Type       | Options           |
-| -------------- | ------     | ----------------- |
-| portfolio_name | string     | null: false       |
-| detail         | text       | null: false       |
-| type           | string     | null: false       |
-| user           | references | foreign_key: true |
+| Column               | Type       | Options           |
+| -------------------- | ------     | ----------------- |
+| portfolio_name       | string     | null: false       |
+| detail               | text       | null: false       |
+| type_id              | string     | null: false       |
+| development_language | integer    | null: false       |
+| price                | integer    |                   |
+| business_type        | integer    | null: false       |
+| user                 | references | foreign_key: true |
 
 ### Association
 

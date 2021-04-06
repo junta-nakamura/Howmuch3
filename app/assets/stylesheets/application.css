@@ -356,6 +356,12 @@ input, select {
 
 
 
+
+
+
+
+
+
 /* 企業ログイン */
 .box-wrapper {
   margin-top: 170px;
@@ -516,11 +522,18 @@ h1 {
 
 
 /* 新規投稿 */
-.new-portfolio-form {
+.form-wrapper-box {
   width: 100vw;
+}
+.new-portfolio-form {
+  margin: 80px auto 0;
   display: flex;
   justify-content: center;
-  margin-top: 80px;
+}
+
+.portfolio-box {
+  margin: 0 auto;
+  width: 800px;
 }
 
 .item-image {
@@ -549,7 +562,7 @@ h1 {
 }
 
 .action-field {
-  margin: 30px 0 60px;
+  margin: 50px 0 60px;
   padding: 8px;
   border: 1px solid #00b5ad;
   color: #00b5ad;
@@ -575,6 +588,40 @@ h1 {
   box-shadow: inset #00b5ad 0 0 0 2em;
 }
 
+.price-field {
+  margin-top: 10px;
+  width: 150px;
+  position: absolute;
+  top: 15px;
+}
+
+.price-box {
+  display: flex;
+  position: relative;
+  margin-top: 20px;
+}
+
+.yen {
+  margin-top: 15px;
+  position: absolute;
+  left: 160px;
+  top: 15px;
+}
+.business-type-box {
+  width: 150px;
+}
+
+.business-type {
+  width: 80px;
+}
+
+.radio-box {
+  margin-top: 10px;
+}
+
+
+
+
 
 
 
@@ -586,7 +633,7 @@ h1 {
 }
 
 .portfolio-show {
-  width: 800px;
+  width: 100%;
   margin-top: 50px;
   display: flex;
   flex-direction: column;
@@ -603,29 +650,30 @@ h1 {
 
 .card-user {
   text-align: center;
-  margin: 20px auto;
-  font-size: 20px;
+  margin: 30px auto 10px;
+  font-size: 16px;
   width: 300px;
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
+  color: black;
 }
 
 .title-show-box {
   font-weight: bold;
-  font-size: 25px;
+  font-size: 23px;
   text-align: center;
-  margin-bottom: 50px;
+  margin: 30px 0;
 }
 
 .content-show-box {
   margin: 50px auto 0;
-  width: 800px;
   height: auto;
 }
 
 .portfolio-detail-box {
   height: auto;
+  width: 90vw;
 }
 
 .btn-groups {
@@ -678,7 +726,6 @@ h1 {
 
 .detail-show-box {
   white-space: pre-wrap;
-  width: 800px;
 }
 
 .user-detail-open {
@@ -686,27 +733,49 @@ h1 {
   justify-content: center;
 }
 
+.user-show-pricebox {
+  display: flex;
+  justify-content: center;
+}
+
+.user-show-price {
+  background-color: rgba(100, 100, 100, 5);
+  color: white;
+  padding: 5px;
+  font-size: 20px;
+  text-align: center;
+  display: inline-block;
+  margin: 30px auto 0;
+}
+
+.development-language-area {
+  margin: 30px 0;
+  text-align: center;
+}
+
+.business-type-area {
+  text-align: center;
+}
+
+.btn-groups-edit {
+  text-align: center;
+  margin: 60px auto;
+}
+
+.bg-secondary {
+  margin: 40px 0 0;
+  font-size: 17px;
+}
+
+
+
+
+
+
 
 
 /* ポートフォリオ編集 */
-.edit-main-content {
-  width: 100vw;
-  display: flex;
-  justify-content: center;
-  margin-top: 80px;
-}
-
-.edit-finish {
-  margin: 10px 0 60px;
-  padding: 8px;
-  border: 1px solid #00b5ad;
-  color: #00b5ad;
-  background-color: white;
-  font-size: 13px;
-}
-
-.button-fill {
-  position: relative;
+.hover-effect_slide-edit {
   display: inline-block;
   padding: 0.4em 1.6em;
   font-size: 0.8em;
@@ -714,8 +783,28 @@ h1 {
   text-decoration: none;
   user-select: none;
   border: 1px #00b5ad solid;
-  box-shadow: inset #00b5ad 0 0 0 0;
-  transition: 0.3s;
+  transition: 0.2s ease;
+  background-color: white ;
+  margin: 70px auto;
+}
+
+.hover-effect_slide-edit::before {
+  z-index: -1;
+  width: 0;
+  height: 100%;
+  content: "";
+  background-color: #00b5ad;
+  transition: 0.2s ease;
+}
+
+.hover-effect_slide-edit:hover {
+  color: #fff;
+  background-color: #00b5ad;
+}
+
+.hover-effect_slide-edit:hover::before {
+  width: 100%;
+  background: #00b5ad;
 }
 
 
@@ -759,6 +848,55 @@ h1 {
   color: #777;
 }
 
+.news-list {
+  display: flex;
+  align-items: center;
+  justify-content: center;/* 親要素に対して中央寄せ */
+}
+
+.arrow-index {
+  position: relative;
+  width: 18px;
+  height: 18px;
+  content: "";
+  background: #00b5ad;
+  border-radius: 50%;
+  transform: translateY(1px);
+}
+
+.arrow-index::before {
+  position: absolute;
+  top: 50%;
+  left: 45%;
+  width: 5px;
+  height: 5px;
+  content: "";
+  border-right: 1px solid #fff;
+  border-bottom: 1px solid #fff;
+  -webkit-transform: translate(-50%, -50%) rotate(-45deg);
+  transform: translate(-50%, -50%) rotate(-45deg);
+}
+
+.notice {
+  margin-left: 0.5em;
+  line-height: 1.2em;
+  color: #323232;
+  text-decoration: none;
+  transform: translate(0, 0.1em);
+}
+
+.notice:hover {
+  text-decoration: underline;
+}
+
+
+
+
+
+
+
+
+
 
 
 
@@ -795,11 +933,11 @@ header {
   text-align: center;
   width: auto;
   max-width: 370px;
-  font-size: 22px;
+  font-size: 18px;
   text-align: center;
-  white-space: nowrap;
+  /* white-space: nowrap;
   overflow: hidden;
-  text-overflow: ellipsis;
+  text-overflow: ellipsis; */
 }
 
 .user-type {
@@ -840,17 +978,19 @@ header {
 .card-value {
   height: 400px;
   width: 300px;
-  margin: 0 60px 50px;
+  margin: 10px 60px 150px;
   position: relative;
 }
 
 .image-wrapper {
-  margin-top: 100px;
+  height: 300px;
+  width: 200px;
+  margin: 50px;
+  position: relative;
 }
 
 .content-wrapper {
   text-align: center;
-  margin-top: 50px;
   position: absolute;
   top: 350px;
 }
@@ -877,20 +1017,23 @@ header {
 }
 
 .card-title {
-  margin-top: 40px;
+  margin-top: 25px;
+  color: black;
 }
 
 .card-detail {
   width: 300px;
-  margin-top: 35px;
+  margin-top: 25px;
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
+  color: black;
 }
 
 .card-image {
   display: flex;
   justify-content: center;
+  width: 100%;
 }
 
 .user-icon-round {
@@ -901,7 +1044,7 @@ header {
 }
 
 .next-to-btn {
-  margin-top: 50px;
+  margin-top: 20px;
 }
 
 .dm-btn-form {
@@ -941,6 +1084,192 @@ header {
   margin: 0;
 }
 
+.portfolio-price {
+  margin-top: 30px;
+  font-size: 20px;
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  background-color: rgba(100, 100, 100, 5);
+  color: white;
+  padding: 5px;
+}
+
+.not-sale {
+  font-size: 15px;
+}
+
+.button-20 {
+  box-sizing: border-box;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 6em;
+  padding: 0.4em 0;
+  text-decoration: none;
+  border: 1px solid #00b5ad;
+  margin: 20px auto;
+}
+
+.news-list {
+  display: flex;
+  align-items: center;
+  justify-content: center;/* 親要素に対して中央寄せ */
+  margin-top: 30px;
+}
+
+.arrow1 {
+  position: relative;
+  width: 18px;
+  height: 18px;
+  content: "";
+  background: #00b5ad;
+  border-radius: 50%;
+  transform: translateY(1px);
+}
+
+.arrow1::before {
+  position: absolute;
+  top: 50%;
+  left: 45%;
+  width: 5px;
+  height: 5px;
+  content: "";
+  border-right: 1px solid #fff;
+  border-bottom: 1px solid #fff;
+  -webkit-transform: translate(-50%, -50%) rotate(-45deg);
+  transform: translate(-50%, -50%) rotate(-45deg);
+}
+
+.notice {
+  margin-left: 0.5em;
+  line-height: 1.2em;
+  color: #323232;
+  text-decoration: none;
+  transform: translate(0, 0.1em);
+}
+
+.notice:hover {
+  text-decoration: underline;
+}
+
+
+.card-value-show {
+  height: 400px;
+  width: 300px;
+  margin: 80px 60px 150px;
+  position: relative;
+}
+
+.fa-bars {
+  position: absolute;
+  top: 31px;
+  left: 230px;
+  font-size: 30px;
+}
+
+
+
+
+
+
+
+
+
+
+/* 検索 */
+.search-form-wrapper {
+  display: none;
+  padding: 50px 0 0 230px;
+}
+
+.search-field {
+  margin-bottom: 5px;
+}
+
+.development-language {
+  margin-top: 10px;
+}
+
+.search-price-field {
+  margin-bottom: 10px;
+  height: 25px;
+}
+
+.search-form {
+  margin-top: 10px;
+  width: 400px;
+  height: 30px;
+}
+
+.search-btn {
+  margin: 20px 0 0 10px;
+}
+
+.search-select-box {
+  margin-top: 10px;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* 検索一覧 */
+.user-wrapper {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+  padding: 0 50px 200px;
+}
+
+.search-user-icon {
+  border-radius: 50%;
+  width: 230px;
+  height: 230px;
+  object-fit: cover;
+}
+
+.search-user {
+  text-align: center;
+  margin: 80px 60px 70px;
+}
+
+.user-show-link {
+  text-decoration: none;
+}
+
+.bottom-search-box {
+  text-align: center;
+  margin-top: 20px;
+  color: black;
+}
+
+.search-user-name {
+  font-size: 16px;
+  font-weight: bold;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;width: 330px;
+}
+
+.search-user-introduction {
+  font-size: 13px;
+  margin-top: 20px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  width: 330px;
+}
 
 
 
@@ -995,7 +1324,7 @@ header {
 }
 
 .list6box {
-  margin: 100px auto 30px;
+  margin: 50px auto 30px;
 }
 
 .company-edit-all {
@@ -1019,6 +1348,17 @@ header {
   text-align: center;
   margin-top: 150px;
 }
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -1063,8 +1403,12 @@ header {
 .chat-partner-name {
   margin-bottom: 5px;
   font-weight: bold;
-  font-size: 14px;
+  font-size: 12px;
   color: black;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  width: 210px;
 }
 
 .chat-content {
@@ -1113,6 +1457,8 @@ header {
 
 
 
+
+
 /* チャットルーム詳細 */
 .message-wrapper {
   width: 80vw;
@@ -1121,6 +1467,7 @@ header {
 .messages-box {
   height: 91%;
   overflow: auto;
+  border: 1px solid #eee;
 }
 
 .message {
@@ -1221,8 +1568,26 @@ header {
   top: 912px;
 }
 
+.room-header {
+  margin-bottom: 30px;
+  padding: 1px 4px;
+  font-family: monospace;
+  font-size: 16px;
+  background: #eee;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
 
+.chatroom-partner {
+  text-decoration: none;
+  color: black;
+}
 
+.chatroom-partner, a:hover {
+  color: black;
+}
 
 
 

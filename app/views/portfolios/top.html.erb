@@ -11,9 +11,9 @@
             <%= link_to "マイページ",  user_path(current_user.id), class:"button-pulse mypage-btn" %>
             <%= link_to "ログアウト", destroy_user_session_path, method: :delete, class:"button-pulse logout-btn" %>
           <% else company_signed_in? %>
+            <%= link_to "投稿一覧", portfolios_path, class:"button-pulse index-btn" %>
             <%= link_to "マイページ", company_path(current_company.id), class:"button-pulse mypage-btn" %>
             <%= link_to "ログアウト",  destroy_company_session_path, method: :delete, class:"button-pulse logout-btn" %>
-            <%= link_to "投稿一覧", portfolios_path, class:"button-pulse index-btn" %>
           <% end %>
         </div>  
         <% else %>
@@ -24,10 +24,10 @@
               <%= link_to "法人ログイン", new_company_session_path, class:"button-pulse login-btn" %>
             </div>
             <div class="header-nav-item">
-              <%= link_to "フリーランス新規登録", new_user_registration_path, class:"button-pulse signup-btn" %>
+              <%= link_to "新規登録", new_user_registration_path, class:"button-pulse signup-btn" %>
             </div>
             <div class="header-nav-item">
-              <%= link_to "フリーランスログイン", new_user_session_path, class:"button-pulse login-btn" %>
+              <%= link_to "ログイン", new_user_session_path, class:"button-pulse login-btn" %>
             </div>
         <% end %> 
       </nav>
