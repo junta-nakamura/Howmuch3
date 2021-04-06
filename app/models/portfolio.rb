@@ -14,11 +14,13 @@ class Portfolio < ApplicationRecord
     validates :development_language_id
     validates :business_type_id
     validates :sale_type_id
+    validates :images
   end
     
   validates :price, presence: true, if: :sale_type?
-  validates :price, numericality: {greater_than_or_equal_to: 0, less_than_or_equal_to: 9999999}
-
+  
+  PRICE_REGEX = /\A\d{7}\z/
+  validates_format_of :price, with: PRICE_REGEX
 
   def sale_type?
     self.sale_type_id == 0
@@ -49,12 +51,6 @@ class Portfolio < ApplicationRecord
       st = sale_type_id
     end 
 
-    # if sale_type_id = 0 && price.present?
-    #   pr = "price<=?', price"
-    # elsif sale_type_id = 0 && price.blank?
-    #   pr = "'price<=?', 999999"
-    # end
-    
     if word.blank? && development_language_id.blank? && business_type_id.blank? && sale_type_id.blank? && price.blank?
       @portfolio = Portfolio.all
     elsif price.blank?

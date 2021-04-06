@@ -10,9 +10,11 @@ class User < ApplicationRecord
   has_one_attached :user_image
 
   with_options presence: true do
-    validates :nickname, presence: true
-    validates :introduction, presence: true
-    validates :birthday, presence: true
+    validates :nickname
+    validates :introduction
+    validates :birthday
+    validates :user_image
+    validates :type_id
   end
 
   with_options presence: true, format: { with: /\A[ぁ-んァ-ヶ一-龥々]+\z/ } do
@@ -33,7 +35,7 @@ class User < ApplicationRecord
     end
   end
 
-  # PASSWORD_REGEX = /\A(?=.*?[a-z])(?=.*?[\d])[a-z\d]+\z/i.freeze
-  # validates_format_of :password, with: PASSWORD_REGEX
+  PASSWORD_REGEX = /\A(?=.*?[a-z])(?=.*?[\d])[a-z\d]+\z/i.freeze
+  validates_format_of :password, with: PASSWORD_REGEX
 
 end

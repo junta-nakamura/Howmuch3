@@ -39,15 +39,15 @@
   
       <div class="field">
         <%= f.label :開発言語, class:"portfolio-type-box" %><br />
-        <%= f.collection_select(:development_language_id, DevelopmentLanguage.all, :id, :name, {prompt: "---" }, {class:"select-box", id:"item-category"}) %>
+        <%= f.collection_select(:development_language_id, DevelopmentLanguage.all, :id, :name, {prompt: "---" }, {class:"select-box", id:"development_language_field"}) %>
       </div>
   
       <div class="field">
         <%= f.label :ビジネスモデル, class:"business-type-box" %><br />
-        <%= f.collection_select(:business_type_id, BusinessType.all, :id, :name, {prompt: "---" }, {class:"select-box business-type", id:"item-category"}) %>
+        <%= f.collection_select(:business_type_id, BusinessType.all, :id, :name, {prompt: "---" }, {class:"select-box business-type", id:"business_type_field"}) %>
       </div>
   
-      <div class="radio-box">
+      <div class="radio-box" id="sale_type_field">
         <label><%= f.radio_button :sale_type_id, 0, onClick:"saleType0(this.checked);" %>販売する</label>
         <label><%= f.radio_button :sale_type_id, 1, onClick:"saleType1(this.checked);" %>販売しない</label>
       </div>
