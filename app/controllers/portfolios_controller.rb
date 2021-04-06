@@ -50,7 +50,7 @@ class PortfoliosController < ApplicationController
   
   private
   def portfolio_params
-    params.require(:portfolio).permit(:portfolio_name, :detail, :type_id, :development_language_id, :business_type_id, :sale_type_id, :price, images: []).merge(user_id: current_user.id)
+    params.require(:portfolio).permit(:portfolio_name, :detail, :development_language_id, :business_type_id, :sale_type_id, :price, images: []).merge(user_id: current_user.id)
   end
 
   def set_portfolio

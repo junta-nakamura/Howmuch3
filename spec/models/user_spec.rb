@@ -146,11 +146,5 @@ RSpec.describe User, type: :model do
       expect(@user.errors.full_messages).to include("Introduction can't be blank")
     end
 
-    it "職種タイプが空では登録できない" do
-      @user.type_id = ""
-      @user.valid?
-      expect(@user.errors.full_messages).to include("Type can't be blank")
-    end
-
   end
 end

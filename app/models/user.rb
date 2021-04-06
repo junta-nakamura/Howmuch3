@@ -6,7 +6,6 @@ class User < ApplicationRecord
   has_many :portfolios, dependent: :destroy
   has_many :messages, dependent: :destroy
   has_many :rooms
-  belongs_to :type
   has_one_attached :user_image
 
   with_options presence: true do
@@ -14,7 +13,6 @@ class User < ApplicationRecord
     validates :introduction
     validates :birthday
     validates :user_image
-    validates :type_id
   end
 
   with_options presence: true, format: { with: /\A[ぁ-んァ-ヶ一-龥々]+\z/ } do

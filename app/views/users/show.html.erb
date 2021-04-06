@@ -32,12 +32,6 @@
       <i class="fas fa-user-alt"></i>
       <%= @user.nickname %>
     </div>
-    <div class="user-type-image">
-      <i class="fas fa-laptop"></i>
-      <span class="user-type">
-        <%= @user.type.name %>
-      </span>
-    </div>
     <% if @user == current_user %>
       <div class="user-btn-groups">
         <%= link_to "編集", edit_user_path(@user), class:"edit-btn button-fill" %>

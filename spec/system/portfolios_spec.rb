@@ -33,13 +33,13 @@ RSpec.describe "ポートフォリオ投稿", type: :system do
       attach_file 'portfolio_images', 'public/images/test_image.png'
       fill_in 'portfolio_portfolio_name', with: @portfolio.portfolio_name
       fill_in 'portfolio_detail', with: @portfolio.detail
-      select 'ITエンジニア', from: 'portfolio[type_id]'
       select 'Java', from: 'portfolio[development_language_id]'
       select 'BtoB', from: 'portfolio[business_type_id]'
       sleep 0.5
       choose 'portfolio_sale_type_id_0'
       fill_in 'portfolio[price]', with: @portfolio.price
       # 新規投稿ボタンを押下するとportfolioモデルのカウントが1上がる
+      sleep 0.5
       expect{
         click_on '登録' 
       }.to change{Portfolio.count}.by(1)
@@ -74,7 +74,6 @@ RSpec.describe "ポートフォリオ投稿", type: :system do
       # attach_file 'portfolio_images', 'public/images/test_image.png'
       fill_in 'portfolio_portfolio_name', with: ''
       fill_in 'portfolio_detail', with: ''
-      # select 'ITエンジニア', from: 'portfolio[type_id]'
       # select 'Java', from: 'portfolio[development_language_id]'
       # select 'BtoB', from: 'portfolio[business_type_id]'
       # choose 'portfolio_sale_type_id_0'
@@ -152,7 +151,6 @@ RSpec.describe "ポートフォリオ編集", type: :system do
       attach_file 'portfolio_images', 'public/images/test_image.png'
       fill_in 'portfolio_portfolio_name', with: @portfolio2.portfolio_name
       fill_in 'portfolio_detail', with: @portfolio2.detail
-      select 'ITエンジニア', from: 'portfolio[type_id]'
       select 'Ruby', from: 'portfolio[development_language_id]'
       select 'BtoC', from: 'portfolio[business_type_id]'
       sleep 0.1
@@ -212,7 +210,6 @@ RSpec.describe "ポートフォリオ編集", type: :system do
       attach_file 'portfolio_images', 'public/images/test_image.png'
       fill_in 'portfolio_portfolio_name', with: ''
       fill_in 'portfolio_detail', with: ''
-      # select 'ITエンジニア', from: 'portfolio[type_id]'
       # select 'Ruby', from: 'portfolio[development_language_id]'
       # select 'BtoC', from: 'portfolio[business_type_id]'
       sleep 0.1

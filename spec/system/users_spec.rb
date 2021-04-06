@@ -25,7 +25,6 @@ RSpec.describe "ユーザー新規登録", type: :system do
       fill_in 'user_first_name', with: @user.first_name
       fill_in 'user_last_name_kana', with: @user.last_name_kana
       fill_in 'user_first_name_kana', with: @user.first_name_kana
-      select 'ITエンジニア', from: 'user[type_id]'
       select '1930', from: 'user_birthday_1i'
       select '1', from: 'user_birthday_2i'
       select '1', from: 'user_birthday_3i'
@@ -66,7 +65,6 @@ RSpec.describe "ユーザー新規登録", type: :system do
       fill_in 'user_last_name_kana', with: ""
       fill_in 'user_first_name_kana', with: ""
       # expect(item_category).to be_blank
-      # select '', from: 'user[type_id]'
       # select '', from: 'user_birthday_1i'
       # select '', from: 'user_birthday_2i'
       # select '', from: 'user_birthday_3i'

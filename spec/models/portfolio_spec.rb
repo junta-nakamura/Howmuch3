@@ -22,22 +22,10 @@ RSpec.describe Portfolio, type: :model do
       expect(@portfolio.errors.full_messages).to include("Detail can't be blank")
     end
 
-    it "職種タイプが空では投稿できない" do
-      @portfolio.type_id = ""
-      @portfolio.valid?
-      expect(@portfolio.errors.full_messages).to include("Type can't be blank")
-    end
-
     it "開発言語が空では投稿できない" do
       @portfolio.development_language_id = ""
       @portfolio.valid?
       expect(@portfolio.errors.full_messages).to include("Development language can't be blank")
-    end
-
-    it "ビジネスタイプが空では投稿できない" do
-      @portfolio.business_type_id = ""
-      @portfolio.valid?
-      expect(@portfolio.errors.full_messages).to include("Business type can't be blank")
     end
 
     it "販売タイプが空では投稿できない" do

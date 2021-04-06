@@ -10,7 +10,6 @@ FactoryBot.define do
     first_name_kana       {'ナマエ'}
     birthday              {Faker::Date.between(from: '2020-03-01', to: '2021-03-01')}
     introduction          {Faker::Lorem.paragraph}
-    type_id               {1}
 
     after(:build) do |user|
       user.user_image.attach(io: File.open('public/images/test_image.png'), filename: 'test_image.png')
