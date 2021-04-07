@@ -5,8 +5,7 @@ class CompaniesController < ApplicationController
 
   def show
     if user_signed_in?
-      @room = Room.find(params[:id])
-      @company = Company.find(@room.company_id)
+      @company = Company.find(params[:id])
       @user = current_user
     end
   end

@@ -35,7 +35,7 @@ ITエンジニアは、アイデアとPC1台で世の中を変えることがで
 <img width="1680" alt="スクリーンショット 2021-04-07 9 38 51" src="https://user-images.githubusercontent.com/79129848/113794362-548e7980-9785-11eb-9948-85e789cf9f72.png">
 
 ### チャットルーム
-<img width="1676" alt="スクリーンショット 2021-04-07 10 28 27" src="https://user-images.githubusercontent.com/79129848/113797395-28c2c200-978c-11eb-8942-dcf9f07c62c1.png">
+<img width="1674" alt="スクリーンショット 2021-04-07 11 58 25" src="https://user-images.githubusercontent.com/79129848/113804047-b3112300-9798-11eb-97ef-e7da225894a2.png">
 
 
 # DB設計

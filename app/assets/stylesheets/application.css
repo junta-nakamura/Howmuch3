@@ -1398,6 +1398,7 @@ header {
 
 .room-right {
   margin-top: 10px;
+  width: 230px;
 }
 
 .chat-partner-name {
@@ -1415,6 +1416,9 @@ header {
   margin-bottom: 5px;
   color: #757575;
   font-size: 12px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 
 .chat-date {
@@ -1506,6 +1510,7 @@ header {
 .message-content {
   font-size: 18px;
   margin-bottom: 8px;
+  white-space: pre-wrap;
 }
 
 .message-date {
@@ -1532,6 +1537,8 @@ header {
   margin-top: 20px;
   border: 1px solid rgb(223, 223, 223);
   position: relative;
+  overflow: auto;
+  resize: none;
 }
 
 .submit-btn {
@@ -1588,6 +1595,17 @@ header {
 .chatroom-partner, a:hover {
   color: black;
 }
+
+.message-image {
+  margin-bottom: 5px;
+}
+
+.submit-message {
+  position: absolute;
+  right: 60px;
+  top: 890px;
+}
+
 
 
 
