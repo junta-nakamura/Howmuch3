@@ -21,7 +21,6 @@ deviseを用いてユーザーをエンジニアと企業の2つに分けてい�
 <br>
 
 ### 投稿一覧ページ
-<!-- <img width="1680" alt="スクリーンショット 2021-04-07 9 34 05" src="https://user-images.githubusercontent.com/79129848/113794322-3d4f8c00-9785-11eb-9a84-09c72c576d82.png"> -->
 ![README1](https://user-images.githubusercontent.com/79129848/113881742-ac65c880-97f7-11eb-8df8-48bb262dd6d7.gif)
 アプリケーションのDEMO画像、販売を目的としているかどうか、販売を目的としている場合はその価格、ユーザー名、タイトル、概要の一部を表示しています。
 <br>
@@ -29,7 +28,7 @@ deviseを用いてユーザーをエンジニアと企業の2つに分けてい�
 <br>
 
 ### 投稿検索機能
-<img width="1680" alt="スクリーンショット 2021-04-07 9 34 59" src="https://user-images.githubusercontent.com/79129848/113794337-450f3080-9785-11eb-875f-4a15548916b3.png">
+![README2](https://user-images.githubusercontent.com/79129848/113885632-f308f200-97fa-11eb-96c8-9414cf196be9.gif)
 検索対象をユーザーとポートフォリオで分け、検索対象によって検索項目が変動するようにしています。<br>
 デフォルトでは検索フォームは表示せず、ボタンを押下することでjQueryが発火し、上から検索フォームが降りてくるようにしています。<br>
 また、ラジオボックスの選択内容によって入力項目を制御しています。
@@ -44,7 +43,7 @@ deviseを用いてユーザーをエンジニアと企業の2つに分けてい�
 <br>
 
 ### ユーザー詳細ページ
-<img width="1680" alt="スクリーンショット 2021-04-07 9 38 51" src="https://user-images.githubusercontent.com/79129848/113794362-548e7980-9785-11eb-9948-85e789cf9f72.png">
+![README3](https://user-images.githubusercontent.com/79129848/113889187-f0f46280-97fd-11eb-9970-9c4802cb6bbf.gif)
 「DMを送る」ボタンを押下した際、同一の組み合わせのチャットルームがないか確認し、なければ新規でチャットルームを作成します。
 <br>
 <br>
