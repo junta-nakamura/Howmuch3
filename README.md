@@ -21,7 +21,8 @@ deviseを用いてユーザーをエンジニアと企業の2つに分けてい�
 <br>
 
 ### 投稿一覧ページ
-<img width="1680" alt="スクリーンショット 2021-04-07 9 34 05" src="https://user-images.githubusercontent.com/79129848/113794322-3d4f8c00-9785-11eb-9a84-09c72c576d82.png">
+<!-- <img width="1680" alt="スクリーンショット 2021-04-07 9 34 05" src="https://user-images.githubusercontent.com/79129848/113794322-3d4f8c00-9785-11eb-9a84-09c72c576d82.png"> -->
+![README1](https://user-images.githubusercontent.com/79129848/113881742-ac65c880-97f7-11eb-8df8-48bb262dd6d7.gif)
 アプリケーションのDEMO画像、販売を目的としているかどうか、販売を目的としている場合はその価格、ユーザー名、タイトル、概要の一部を表示しています。
 <br>
 <br>
