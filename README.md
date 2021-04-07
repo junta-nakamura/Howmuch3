@@ -20,7 +20,11 @@ ITエンジニアは、アイデアとPC1台で世の中を変えることがで
 
 ### DEMO
 <img width="1680" alt="スクリーンショット 2021-04-07 9 04 32" src="https://user-images.githubusercontent.com/79129848/113792331-a1bc1c80-9780-11eb-910b-b2564d332b8b.png">
-https://user-images.githubusercontent.com/79129848/113793478-5a835b00-9783-11eb-9795-43542500508c.mov
+<img width="1680" alt="スクリーンショット 2021-04-07 9 33 06" src="https://user-images.githubusercontent.com/79129848/113794294-2d37ac80-9785-11eb-8d40-ed3b02fcc3a9.png">
+<img width="1680" alt="スクリーンショット 2021-04-07 9 34 05" src="https://user-images.githubusercontent.com/79129848/113794322-3d4f8c00-9785-11eb-9a84-09c72c576d82.png">
+<img width="1680" alt="スクリーンショット 2021-04-07 9 34 59" src="https://user-images.githubusercontent.com/79129848/113794337-450f3080-9785-11eb-875f-4a15548916b3.png">
+<img width="1676" alt="スクリーンショット 2021-04-07 9 36 02" src="https://user-images.githubusercontent.com/79129848/113794351-4cced500-9785-11eb-993b-87596200a55a.png">
+<img width="1680" alt="スクリーンショット 2021-04-07 9 38 51" src="https://user-images.githubusercontent.com/79129848/113794362-548e7980-9785-11eb-9948-85e789cf9f72.png">
 
 
 ### テーブル設計
