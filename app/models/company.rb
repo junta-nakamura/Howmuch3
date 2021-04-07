@@ -25,7 +25,7 @@ class Company < ApplicationRecord
   POSTAL_CODE_REGEX = /\A\d{7}\z/
   validates_format_of :postal_code, with: POSTAL_CODE_REGEX
   
-  PASSWORD_REGEX = /\A(?=.*?[a-z])(?=.*?[\d])[a-z\d]+\z/i
-  validates_format_of :password, with: PASSWORD_REGEX
+  # PASSWORD_REGEX = /\A(?=.*?[a-z])(?=.*?[\d])[a-z\d]+\z/i.freeze
+  # validates_format_of :password, with: PASSWORD_REGEX
 
 end
