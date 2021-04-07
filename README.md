@@ -76,8 +76,10 @@ ITエンジニアは、アイデアとPC1台で世の中を変えることがで
 | house_number       | string  | null: false               |
 | building           | string  |                           |
 
-- has_many :rooms
+### Association
 
+- has_many :rooms
+- has_many :messages
 
 
 ## portfoliosテーブル
@@ -105,6 +107,8 @@ ITエンジニアは、アイデアとPC1台で世の中を変えることがで
 | user           | references | foreign_key: true |
 | company        | references | foreign_key: true |
 
+### Association
+
 - belongs_to :user
 - belongs_to :company
 - has_many :messages
@@ -118,6 +122,8 @@ ITエンジニアは、アイデアとPC1台で世の中を変えることがで
 | company        | references | foreign_key: true |
 | room           | references | foreign_key: true |
 | content        | text       | null: false       |
+
+### Association
 
 - belongs_to :user
 - belongs_to :company
