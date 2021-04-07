@@ -2,8 +2,8 @@ class Portfolio < ApplicationRecord
   extend ActiveHash::Associations::ActiveRecordExtensions
 
   belongs_to :user
-  belongs_to :business_type
   belongs_to :development_language
+  belongs_to :business_type
   has_many_attached :images
 
   with_options presence: true do
