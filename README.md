@@ -224,9 +224,9 @@ VSCode
 
 
 # ローカルでの動作方法
-% git clone https://github.com/junta-nakamura/Howmuch3.git
-% cd Howmuch3
-% bundle install
-% yarn install
-% rails db:create
+% git clone https://github.com/junta-nakamura/Howmuch3.git<br>
+% cd Howmuch3<br>
+% bundle install<br>
+% yarn install<br>
+% rails db:create<br>
 % rails db:migrate
