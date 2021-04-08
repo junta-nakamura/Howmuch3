@@ -229,4 +229,5 @@ VSCode
 % bundle install<br>
 % yarn install<br>
 % rails db:create<br>
-% rails db:migrate
+% rails db:migrate<br>
+http://localhost:3000/
