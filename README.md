@@ -42,9 +42,9 @@ ITエンジニアは、アイデアとPC1台で世の中を変えることがで
 # DEMO
 ### トップページ
 <img width="1678" alt="スクリーンショット 2021-04-08 14 33 00" src="https://user-images.githubusercontent.com/79129848/113973509-681a0d00-9877-11eb-9181-44ea212b5d0d.png">
-deviseを用いてユーザーを<b>「ITエンジニア」</b>と<b>「企業」</b>の2つに分けている。<br>
+deviseを用いてユーザーを<b>「ITエンジニア」</b>と<b>「企業」</b>に分別。<br>
 企業とITエンジニアで機能が異なり、ITエンジニア側の機能はあえて制限。<br>
-新規登録後、もしくはログイン後に遷移するページを指定するため、deviseのルーティングやコントローラーもアレンジしている。
+新規登録後、もしくはログイン後に遷移するページを指定するため、deviseのルーティングやコントローラーをアレンジ。
 <br>
 <br>
 <br>
@@ -223,4 +223,10 @@ VSCode
 
 
 
-
+# ローカルでの動作方法
+% git clone https://github.com/junta-nakamura/Howmuch3.git
+% cd Howmuch3
+% bundle install
+% yarn install
+% rails db:create
+% rails db:migrate
