@@ -131,7 +131,7 @@ deviseを用いてユーザーを<b>「ITエンジニア」</b>と<b>「企業�
 Ruby,Ruby on Rails
 
 ### フロントエンド
-HTML,CSS,JavaScript,jQuery
+HTML,CSS,jQuery
 
 ### データベース
 MySQL
